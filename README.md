@@ -53,7 +53,7 @@ project/
 La estructura del repositorio está organizada en diferentes directorios para una navegación eficiente:
 
 ```
-assets/                 # Imágenes
+assets/                 # Imágenes y archivos
 data/                   # Datos crudos y procesados
 notebooks/              # Notebooks organizados por sección
 scripts/                # Scripts para tareas repetitivas
@@ -94,22 +94,18 @@ Cada carpeta está diseñada para contener recursos específicos y mantenerse mo
 ## Progreso del curso
 El curso está dividido en 20 secciones. Este es un resumen del progreso realizado hasta ahora:
 
-| Sección        | Título                           | Descripción breve            | Estado  |
-|----------------|----------------------------------|------------------------------|---------|
-| 1              | Introducción                     | Introducción al Curso        | ✅      |
-| 2              | Machine Learning 101             | Qué es ML y tipos de ML      | ✅      |
-| 3              | Visualización de datos           | Uso de Matplotlib y Seaborn  | ❌      |
-| ...            | ...                              | ...                          | ...     |
+| Sección  | Título                                                  | Descripción breve            | Estado  |
+|----------|---------------------------------------------------------|------------------------------|---------|
+| 1        | Introducción                                            | Introducción al Curso        | ✅      |
+| 2        | [Machine Learning 101](/docs/section_02.md)             | Qué es ML y tipos de ML      | ✅      |
+| 3        | Visualización de datos                                  | Uso de Matplotlib y Seaborn  | ❌      |
+| ...      | ...                                                     | ...                          | ...     |
 
 - **✅ Completado**
 - **🚧 En progreso**
 - **❌ Pendiente**
 
 ---
-
-## Secciones detalladas
-
-### Sección 2
 
 ### Sección 5 : Data Science Environment Setup
 
