@@ -1,0 +1,15 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Entornos virtuales
+env/
+.venv/
+
+# Archivos de dependencias
+environment/
+__pycache__/
+
+# Archivos grandes o generados
+*.log
+results/
