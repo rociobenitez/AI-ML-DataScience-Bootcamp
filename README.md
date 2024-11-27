@@ -100,14 +100,14 @@ Cada carpeta está diseñada para contener recursos específicos y mantenerse mo
 
 El curso está dividido en 20 secciones. Este es un resumen del progreso realizado hasta ahora:
 
-| Sección | Título                                                | Descripción breve           | Estado |
-| ------- | ----------------------------------------------------- | --------------------------- | ------ |
-| 1       | Introducción                                          | Introducción al Curso       | ✅     |
-| 2       | [Machine Learning 101](/docs/section_02.md)           | Qué es ML y tipos de ML     | ✅     |
-| 3       | Visualización de datos                                | Uso de Matplotlib y Seaborn | 🚧     |
-| 4       | The 2 Parths                                          | Uso de Matplotlib y Seaborn | ❌     |
-| 5       | [Data Science Environment Setup](/docs/section_05.md) |                             | 🚧     |
-| ...     | ...                                                   | ...                         | ...    |
+| Sección | Título                                                | Descripción breve                                                                            | Estado |
+| ------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------ |
+| 1       | Introducción                                          | Introducción al Curso                                                                        | ✅     |
+| 2       | [Machine Learning 101](/docs/section_02.md)           | Qué es ML y tipos de ML                                                                      | ✅     |
+| 3       | [ML and Data Science Framework](/docs/section_03.md)  | Framework de 6 pasos, features, modelado, overfitting vs. underfitting, y herramientas clave | ✅     |
+| 4       | The 2 Parths                                          |                                                                                              | 🚧     |
+| 5       | [Data Science Environment Setup](/docs/section_05.md) |                                                                                              | 🚧     |
+| ...     | ...                                                   | ...                                                                                          | ...    |
 
 - **✅ Completado**
 - **🚧 En progreso**
