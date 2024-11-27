@@ -44,6 +44,8 @@ Conda es un **gestor de entornos y paquetes** de código abierto. Fue diseñado 
 
 > 🔗 [Conda Documentación](https://docs.conda.io/en/latest/)
 
+---
+
 ### **2. Conda CheatSheet**
 
 El cheat sheet es un resumen visual y rápido con los comandos más comunes de Conda. Es una herramienta muy útil para tener a mano mientras trabajas con Conda.
@@ -67,6 +69,8 @@ El cheat sheet es un resumen visual y rápido con los comandos más comunes de C
   - Listar entornos: `conda env list`
 
 > 🔗 Consulta el [Conda CheatSheet](/references/conda-cheatsheet.pdf) para más comandos.
+
+---
 
 ### **3. Getting started with Conda**
 
@@ -92,6 +96,8 @@ Esta guía introduce cómo empezar a usar Conda, desde su instalación hasta el 
 
 > Para más detalles, revisa la guía completa: [Getting started with conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
 
+---
+
 ### **4. Preparando el equipo para ML**
 
 Configurar tu equipo correctamente es crucial para garantizar que los proyectos de Machine Learning y Ciencia de Datos se desarrollen de manera eficiente y sin conflictos entre paquetes.
@@ -113,6 +119,8 @@ El artículo [Getting your computer ready for machine learning](https://www.mrdb
 - Asegúrate de que la versión de Python y las bibliotecas instaladas sean compatibles con los requerimientos de tu proyecto.
 
 > 🔗 Consulta el artículo completo para más detalles y configuraciones avanzadas: [Getting your computer ready for machine learning](https://www.mrdbourke.com/get-your-computer-ready-for-machine-learning-using-anaconda-miniconda-and-conda/)
+
+---
 
 ### **5. Miniconda para macOS**
 
