@@ -14,7 +14,7 @@
 | **Machine Learning (ML)**        | Subcampo de AI que enseña a las máquinas a aprender de datos.                   | Predicciones y automatización de tareas.    |
 | **Data Science**                 | Combina estadísticas, programación y ML para analizar datos y extraer insights. | Análisis, modelado y comunicación de datos. |
 
-![Diferencia entre AI, ML y Data Science](/assets/section-2/ai-ml-datascience.png)
+<img src="/assets/section-1/ai-ml-datascience.png" alt="Diferencia entre AI, ML y Data Science" width="600">
 
 ---
 
@@ -75,13 +75,13 @@ Entrené un modelo con **Teachable Machine** para identificar si estoy trabajand
 **Objetivo del modelo**
 
 - **Categorías**: Buena postura vs. Mala postura.
-- **Datos utilizados**: Imágenes tomadas desde la cámara del ordenador en diferentes posiciones. Se encuentran en la carpeta `[assets/section-2](/assets/section-2/)`.
+- **Datos utilizados**: Imágenes tomadas desde la cámara del ordenador en diferentes posiciones. Se encuentran en la carpeta `[assets/section-1](/assets/section-1/)`.
 - **Aplicación**: Este modelo puede generar recordatorios para corregir mi postura durante largas sesiones de trabajo.
 
 **Resultados iniciales**
 A continuación, se muestra una captura de la prueba realizada con el modelo:
 
-![Resultados de la prueba realizada en Teachable Machine](/assets/section-2/teachable-machine.jpeg)
+![Resultados de la prueba realizada en Teachable Machine](/assets/section-1/teachable-machine.jpeg)
 
 ---
 
@@ -111,10 +111,10 @@ Los modelos lograron separar las clases principales (alta y baja intensidad) con
 #### **Imágenes de la práctica:**
 
 1. Clasificación inicial con puntos y frontera generada:
-   ![Práctica 1](/assets/section-2/practica.jpeg)
+   ![Práctica 1](/assets/section-1/practica.jpeg)
 
 2. Clasificación ajustada con cambios manuales en los puntos:
-   ![Práctica 2](/assets/section-2/practica-2.jpeg)
+   ![Práctica 2](/assets/section-1/practica-2.jpeg)
 
 ---
 

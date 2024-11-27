@@ -69,7 +69,7 @@ Este framework proporciona una guía clara y organizada para abordar cualquier p
 
 Esta estructura está basada en el [6-Step Field Guide](https://www.mrdbourke.com/a-6-step-field-guide-for-building-machine-learning-projects/).
 
-![Framework](/assets/section-3/framework.png)
+<img src="/assets/section-2/framework.png" alt="Framework" width="600">
 
 > 🔗 Estructura completa en [Whimsical](https://whimsical.com/6-step-field-guide-to-machine-learning-projects-flowcharts-9g65jgoRYTxMXxDosndYTB)
 
@@ -128,7 +128,7 @@ Definir un problema como de Machine Learning requiere identificar qué tipo de a
    - Agrupa datos no etiquetados en categorías basadas en similitudes.
    - Ejemplo: Segmentar clientes en grupos según su comportamiento de compra.
 
-![Tipos de problemas en ML](/assets/section-3/tipos-ml.png)
+<img src="/assets/section-2/tipos-ml.png" alt="Tipos de problemas en ML" width="600">
 
 ### **Ejemplo Aplicado: Reclamos de Seguros**
 
@@ -265,7 +265,7 @@ Las **features** representan los atributos de los datos que se utilizan para con
      - Combinar fechas y tiempos para calcular "tiempo desde el último inicio de sesión".
      - Transformar fechas en "día laboral (sí/no)".
 
-![Ejemplo Features](/assets/section-3/features.png)
+<img src="/assets/section-2/features.png" alt="Ejemplo Features" width="600">
 
 ### **Consideraciones Importantes:**
 
@@ -295,7 +295,7 @@ El modelado es el núcleo de Machine Learning y consiste en convertir datos proc
 - Separar el conjunto de datos en **entrenamiento**, **validación** y **prueba** para evitar sobreajuste.
 - Proporción típica: 70% entrenamiento, 15% validación, 15% prueba.
 
-![](/assets/section-3/splitting-data.png)
+<img src="/assets/section-2/splitting-data.png" alt="División de los datos" width="600">
 
 > **Conjunto de datos de entrenamiento:**
 >
@@ -431,7 +431,7 @@ Al entrenar modelos de Machine Learning, el equilibrio entre **overfitting** y *
 | **Underfitting** | Baja precisión    | Baja precisión | Modelo poco útil.     |
 | **Buen ajuste**  | Alta precisión    | Alta precisión | Modelo equilibrado.   |
 
-![](/assets/section-3/over-under-fitting.png)
+<img src="/assets/section-2/over-under-fitting.png" alt="Overfitting vs Underfitting" width="600">
 
 > El objetivo en el modelado es **encontrar un balance** donde el modelo capture patrones significativos (evitando underfitting) sin ajustarse en exceso a los datos de entrenamiento (evitando overfitting). Técnicas como la **validación cruzada, la regularización y una cuidadosa selección del modelo** son esenciales para lograr este equilibrio.
 

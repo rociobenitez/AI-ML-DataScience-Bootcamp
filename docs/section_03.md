@@ -110,7 +110,7 @@ El artículo [Getting your computer ready for machine learning](https://www.mrdb
 2. **Miniconda:** Más ligera y flexible, adecuada para usuarios avanzados que prefieren instalar solo lo necesario.
 3. **Conda:** El motor que impulsa ambas plataformas, permite gestionar entornos y dependencias de manera eficiente.
 
-<img src="/assets/section-4/conda-miniconda-anaconda.png" alt="Conda, Miniconda y Anaconda" width="600">
+<img src="/assets/section-3/conda-miniconda-anaconda.png" alt="Conda, Miniconda y Anaconda" width="600">
 
 #### **Recomendaciones Prácticas:**
 
@@ -240,6 +240,8 @@ Estos son los pasos clave para iniciar un proyecto de Machine Learning utilizand
   conda create --prefix ./env python=3.9 pandas numpy matplotlib scikit-learn
   ```
 
+<img src="/assets/section-3/conda-terminal.png" alt="Crear entorno en un proyecto de ML (terminal)" width="600">
+
 **¿Qué sucede al ejecutar este comando?**
 
 - **`--prefix ./env`:** Indica que el entorno se guardará en la carpeta del proyecto (`./env`).
@@ -254,6 +256,8 @@ Estos son los pasos clave para iniciar un proyecto de Machine Learning utilizand
   conda activate ./env
   ```
 
+<img src="/assets/section-3/conda-terminal-2.png" alt="Activar entorno en un proyecto de ML (terminal)" width="600">
+
 > **Nota:** Si activas el entorno correctamente, deberías ver algo como `(env)` al inicio del prompt de tu terminal, indicando que estás dentro del entorno.
 
 **4. Verificar los Entornos Disponibles**
@@ -263,6 +267,8 @@ Estos son los pasos clave para iniciar un proyecto de Machine Learning utilizand
   conda env list
   ```
   - Verás una lista de entornos y sus ubicaciones. El entorno activo estará marcado con un `*`.
+
+<img src="/assets/section-3/conda-env-list.png" alt="Verificar los Entornos Disponibles (terminal)" width="600">
 
 **5. Añadir el Entorno al Proyecto**
 
@@ -296,7 +302,7 @@ Estos son los pasos clave para iniciar un proyecto de Machine Learning utilizand
   conda remove --prefix ./env --all
   ```
 
-<img src="/assets/section-4/project-setup.png" alt="Project Setup Environment" width="600">
+<img src="/assets/section-3/project-setup.png" alt="Project Setup Environment" width="600">
 
 > Estos pasos te permiten configurar un entorno limpio y aislado para cada proyecto. Esto asegura **compatibilidad de dependencias y evita conflictos** con otros proyectos en tu sistema.
 
