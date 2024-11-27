@@ -1,481 +1,488 @@
-# Framework de Machine Learning
+# Data Science Environment Setup
 
-Esta sección se centra en la creación de un framework claro para abordar proyectos de Machine Learning y en el proceso técnico del modelado de datos. La estructura presentada aquí servirá como referencia práctica y organizada para implementar estos conceptos en proyectos futuros.
+Este documento guía paso a paso la configuración de un entorno de desarrollo para proyectos de **Ciencia de Datos y Machine Learning** utilizando herramientas como **Conda** y **Jupyter Notebook**.
+
+Incluye:
+
+- Cómo instalar y gestionar entornos virtuales con Conda.
+- Cómo configurar y optimizar tu equipo para trabajar en proyectos avanzados de ML.
+- Cómo compartir y colaborar eficientemente utilizando archivos `.yml`.
+
+Puedes seguir esta guía para asegurar un entorno limpio, reproducible y escalable, fundamental para trabajar con modelos de Machine Learning y grandes volúmenes de datos.
 
 ---
 
 ## **Índice**
-1. [Framework en 6 Pasos para Proyectos de ML](#framework-en-6-pasos-para-proyectos-de-ml)
-2. [Paso 1: Definición del Problema](#paso-1-definición-del-problema)
-3. [Paso 2: Datos](#paso-2-datos)
-4. [Paso 3: Evaluación](#paso-3-evaluación)
-   - [Métricas en Regresión](#métricas-en-regresión)
-   - [Métricas en Clasificación](#métricas-en-clasificación)
-   - [Métricas en Problemas de Recomendación](#métricas-en-problemas-de-recomendación)
-5. [Paso 4: Features o Características](#paso-4-features-o-características)
-6. [Paso 5: Modelado](#paso-5-modelado)
-   - [División de datos (splitting)](#1-división-de-datos-splitting)
-   - [Elección del Modelo](#2-elección-del-modelo)
-   - [Mejora y Ajuste del Modelo](#3-mejora-y-ajuste-del-modelo)
-   - [Comparación de Modelos](#4-comparación-de-modelos)
-   - [Overfitting vs Underfitting](#overfitting-vs-underfitting)
-5. [Paso 6: Experimentación y Mejora](#paso-6-experimentación-y-mejora)
-6. [Herramientas y Recursos Clave](#herramientas-y-recursos-clave)
+
+1. [¿Qué es Conda?](#1-qué-es-conda)
+2. [Conda CheatSheet](#2-conda-cheatsheet)
+3. [Getting started with Conda](#3-getting-started-with-conda)
+4. [Preparando el equipo para ML](#4-preparando-el-equipo-para-ml)
+5. [Miniconda para macOS](#5-miniconda-para-macos)
+   - [Uso típico en macOs](#uso-típico-en-macos)
+6. [Cómo Saber si Tienes Conda o Miniconda Instalados](#6-cómo-saber-si-tienes-conda-o-miniconda-instalados)
+7. [Pasos para Configurar un Proyecto de ML en Mac](#7-pasos-para-configurar-un-proyecto-de-ml-en-mac) ⭐️
+8. [Usar el Entorno en Jupyter Notebook](#8-usar-el-entorno-en-jupyter-notebook)
+9. [Compartir tu Entorno Conda](#9-compartir-tu-entorno-conda)
+10. [Jupyter Notebook](#10-jupyter-notebook)
+11. [Atajos Esenciales para Jupyter Notebook](#11-atajos-esenciales-para-jupyter-notebook)
 
 ---
 
-## **Framework en 6 Pasos para Proyectos de ML**
+## **1. ¿Qué es Conda?**
 
-Este framework proporciona una guía clara y organizada para abordar cualquier proyecto de Machine Learning, desde la definición inicial hasta la experimentación y mejora continua. Se puede utilizar como referencia para garantizar que cada paso esté alineado con los objetivos del problema y los datos disponibles.
+Conda es un **gestor de entornos y paquetes** de código abierto. Fue diseñado inicialmente para Python, pero también gestiona otros lenguajes como R. Sus principales características son:
 
-1. **Definición del Problema:**
-   - ¿Qué problema práctico o empresarial estamos tratando de resolver?
-   - ¿Cómo puede reformularse como un problema de Machine Learning?
-   - ¿Supervisado o no supervisado? ¿Problema de clasificación o de regresión?
-   - Ejemplo: "Queremos predecir el abandono de clientes" → "¿Podemos usar datos históricos para identificar patrones de abandono?"
+- **Gestión de entornos:** Puedes crear, clonar, exportar y eliminar entornos virtuales con diferentes versiones de Python y paquetes instalados.
+- **Gestión de dependencias:** Se asegura de que los paquetes instalados sean compatibles entre sí.
+- **Versatilidad:** Funciona con cualquier sistema operativo (Windows, macOS, Linux) y no está limitado a paquetes de Python (también puede gestionar bibliotecas de C, C++, etc.).
 
-2. **Datos:**
-   - ¿Qué datos tenemos disponibles? ¿Son suficientes para resolver el problema?
-   - ¿Cómo se relacionan estos datos con la definición del problema?
-   - Tipos de datos:
-     - **Estructurados o no estructurados:** Tablas vs. imágenes, texto, audio.
-     - **Estáticos o en flujo:** Datos almacenados vs. datos en tiempo real.
+**Ventajas principales:**
 
-3. **Evaluación:**
-   - ¿Qué métrica definirá el éxito del modelo? 
-   - Ejemplo: Una precisión del 95% puede ser excelente en algunos contextos, pero insuficiente en otros como la detección de fraudes.
-   - Asegúrate de que los criterios de evaluación reflejen los objetivos prácticos.
+- Instalación sencilla de paquetes complicados.
+- Ideal para proyectos de data science y machine learning debido a la gestión eficiente de dependencias.
 
-4. **Características (Features):**
-   - ¿Qué partes de nuestros datos serán relevantes para entrenar el modelo?
-   - Ejemplo: Para predecir precios de casas, las características relevantes podrían incluir ubicación, tamaño y antigüedad.
-   - ¿Cómo pueden influir nuestros conocimientos previos en la selección y creación de estas características?
+> 🔗 [Conda Documentación](https://docs.conda.io/en/latest/)
 
-5. **Modelado:**
-   - ¿Qué modelo es el más adecuado para el problema (clasificación, regresión, clustering)?
-   - ¿Cómo podemos mejorar el modelo ajustando sus hiperparámetros?
-   - ¿Cómo se compara este modelo con otros en términos de métricas y rendimiento?
+## **2. Conda CheatSheet**
 
-6. **Experimentación:**
-   - ¿Qué nuevas estrategias, modelos o configuraciones podríamos probar para mejorar los resultados?
-   - ¿El modelo implementado está funcionando como esperábamos en producción?
-   - ¿Cómo podrían las observaciones actuales modificar las decisiones en las etapas anteriores?
+El cheat sheet es un resumen visual y rápido con los comandos más comunes de Conda. Es una herramienta muy útil para tener a mano mientras trabajas con Conda.
 
+### Comandos básicos:
 
-Esta estructura está basada en el [6-Step Field Guide](https://www.mrdbourke.com/a-6-step-field-guide-for-building-machine-learning-projects/).
+- **Gestión de entornos:**
 
-![Framework](/assets/section-3/framework.png)
+  - Crear un entorno: `conda create --name myenv`
+  - Activar un entorno: `conda activate myenv`
+  - Desactivar un entorno: `conda deactivate`
+  - Eliminar un entorno: `conda remove --name myenv --all`
 
-> 🔗 Estructura completa en [Whimsical](https://whimsical.com/6-step-field-guide-to-machine-learning-projects-flowcharts-9g65jgoRYTxMXxDosndYTB)
+- **Gestión de paquetes:**
 
----
+  - Instalar un paquete: `conda install package_name`
+  - Actualizar un paquete: `conda update package_name`
+  - Listar paquetes instalados: `conda list`
 
-## **Paso 1: Definición del Problema**
+- **Información del entorno:**
+  - Listar entornos: `conda env list`
 
-Definir un problema como de Machine Learning requiere identificar qué tipo de aprendizaje y enfoque será más adecuado para abordarlo. A continuación, se resumen los tipos principales de aprendizaje y problemas en ML:
+> 🔗 Consulta el [Conda CheatSheet](/references/conda-cheatsheet.pdf) para más comandos.
 
-### **Tipos de Aprendizaje en ML**
+## **3. Getting started with Conda**
 
-1. **Aprendizaje Supervisado:**
-   - Utiliza datos **etiquetados** (inputs con resultados conocidos) para entrenar un modelo que pueda predecir resultados futuros.
-   - *Ejemplo: Predecir si un paciente tiene o no una enfermedad cardíaca, basándose en historiales médicos etiquetados.*
-   - El modelo devuelve predicciones probabilísticas, como "70% de probabilidad de tener la enfermedad".
+Esta guía introduce cómo empezar a usar Conda, desde su instalación hasta el uso básico.
 
-2. **Aprendizaje No Supervisado:**
-   - Trabaja con datos **no etiquetados** para identificar patrones o relaciones entre ellos.
-   - *Ejemplo: Agrupar clientes de una tienda según su historial de compras (clustering). Las etiquetas (categorías) son añadidas posteriormente por el experto en dominio.*
-   - Útil para descubrimientos en grandes volúmenes de datos.
+### Pasos iniciales:
 
-3. **Transfer Learning:**
-   - Aprovecha un modelo **previamente entrenado** y lo ajusta a un problema nuevo y específico.
-   - *Ejemplo: Utilizar un modelo preentrenado en texto (como uno basado en Wikipedia) para clasificar si un reclamo de seguro está "a favor" o "en contra" del cliente.*
+1. **Instalación de Miniconda o Anaconda:**
 
-4. **Reinforcement Learning (Aprendizaje por Refuerzo)**:
-   - Menos común en negocios estándar debido a:
-      - Requisitos de computación
-      - Complejidad del diseño
-      - Largo tiempo de entrenamiento
+   - Miniconda: Una instalación ligera con Conda y Python básicos.
+   - Anaconda: Incluye Conda y un amplio ecosistema de herramientas y bibliotecas.
 
-### **Tipos de Problemas en ML**
+2. **Creación de entornos virtuales:**
 
-1. **Clasificación:**  *(supervisado)*
-   - Predice etiquetas discretas para los datos.  
-   - Ejemplos: 
-     - Clasificar correos como "spam" o "no spam" (**binaria**).  
-     - Determinar niveles como "bajo", "medio", "alto" (**multi-clase**).  
-     - Asignar múltiples etiquetas a un dato (**multi-etiqueta**).
+   - Los entornos virtuales te permiten trabajar con diferentes versiones de paquetes y Python en proyectos aislados.
 
-2. **Regresión:**  
-   - Predice valores numéricos continuos.  
-   - Ejemplo: Estimar el precio de una casa o predecir ventas futuras.
+3. **Instalación de paquetes:**
 
-3. **Recomendación:**  
-   - Sugiere elementos personalizados en función de datos previos.  
-   - Ejemplo: Recomendar productos en una tienda online según historial de compras.
+   - Los paquetes pueden instalarse desde el canal principal de Conda o desde canales externos como conda-forge.
 
-4. **Clustering:**  *(no supervisado)*
-   - Agrupa datos no etiquetados en categorías basadas en similitudes.  
-   - Ejemplo: Segmentar clientes en grupos según su comportamiento de compra.
+4. **Exportar un entorno:**
+   - Puedes compartir tus entornos con otros mediante el comando `conda env export > environment.yml`.
 
-![Tipos de problemas en ML](/assets/section-3/tipos-ml.png)
+> Para más detalles, revisa la guía completa: [Getting started with conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
 
-### **Ejemplo Aplicado: Reclamos de Seguros**
+## **4. Preparando el equipo para ML**
 
-**Problema:** Un gran número de reclamos de seguros está llegando más rápido de lo que el personal puede manejarlos. Hay datos históricos etiquetados que indican si un reclamo fue "con culpa" o "sin culpa".
+Configurar tu equipo correctamente es crucial para garantizar que los proyectos de Machine Learning y Ciencia de Datos se desarrollen de manera eficiente y sin conflictos entre paquetes.
 
-**Definición en términos de ML:**
-Queremos clasificar los reclamos como "con culpa" o "sin culpa". Esto convierte el problema en un caso de **clasificación supervisada**.
+El artículo [Getting your computer ready for machine learning](https://www.mrdbourke.com/get-your-computer-ready-for-machine-learning-using-anaconda-miniconda-and-conda/) de Daniel Bourke describe cómo usar herramientas como **Anaconda**, **Miniconda** y **Conda** para preparar tu entorno de trabajo.
 
-> Para definir un problema de negocio como un problema de Machine Learning:
-> 1. Reformúlalo en términos simples (p. ej., "¿podemos clasificar esto?").
-> 2. Decide qué tipo de problema es (clasificación, regresión o recomendación).
-> 3. Define el objetivo inicial en una sola frase y agrega complejidad conforme sea necesario.
+### **Resumen Técnico:**
 
----
+1. **Anaconda:** Ideal para principiantes porque incluye un ecosistema completo con herramientas preinstaladas.
+2. **Miniconda:** Más ligera y flexible, adecuada para usuarios avanzados que prefieren instalar solo lo necesario.
+3. **Conda:** El motor que impulsa ambas plataformas, permite gestionar entornos y dependencias de manera eficiente.
 
-## **Paso 2: Datos**
+![](/assets/section-4/conda-miniconda-anaconda.png)
 
-- **Estructurados:** Tablas con columnas bien definidas.
-- **No estructurados:** Datos complejos como imágenes, audio o texto.
-- **Datos estáticos:** Datos históricos que rara vez cambian o se actualizan.
-- **Datos en streaming**: Datos que se generan y actualizan de manera continua.
-- **Datos mixtos:** Combinación de datos estructurados y no estructurados.
+### **Recomendaciones Prácticas:**
 
----
+- Usa **Miniconda** si quieres mantener tu equipo más limpio y personalizar las herramientas necesarias.
+- Crea **entornos específicos** para cada proyecto para evitar conflictos de dependencias.
+- Asegúrate de que la versión de Python y las bibliotecas instaladas sean compatibles con los requerimientos de tu proyecto.
 
-## **Paso 3: Evaluación**
+> 🔗 Consulta el artículo completo para más detalles y configuraciones avanzadas: [Getting your computer ready for machine learning](https://www.mrdbourke.com/get-your-computer-ready-for-machine-learning-using-anaconda-miniconda-and-conda/)
 
-La evaluación de modelos de Machine Learning es fundamental para determinar su desempeño y utilidad en un problema práctico. Las métricas de evaluación varían según el tipo de problema: clasificación, regresión o recomendación.
+## **5. Miniconda para macOS**
 
-### **Métricas en Regresión**
+Miniconda es una versión compacta y ligera de Anaconda.
 
-- **MAE (Mean Absolute Error - Error Absoluto Medio)**
-   - Promedio de las diferencias absolutas entre las predicciones del modelo y los valores reales.
-   - Fórmula: \( MAE = \frac{1}{n} \sum_{i=1}^n | y_i - \hat{y}_i | \)
-- **RMSE (Root Mean Square Error)**
-   - Promedio de los errores al cuadrado. Penaliza más los errores grandes.
-   - Fórmula: \( MSE = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2 \)
-- **Raíz del Error Cuadrático Medio (Root Mean Squared Error, RMSE):**
-   - Raíz cuadrada del MSE. Penaliza los errores grandes más que el MAE.
-   - Fórmula: \( RMSE = \sqrt{MSE} \)
-- **\( R^2 \) (Coeficiente de determinación)**
-   - Mide qué proporción de la variabilidad de los datos es explicada por el modelo.
-   - Valores cercanos a 1.0 indican un ajuste casi perfecto.
+- **Incluye lo esencial:** Python, Conda y paquetes básicos.
+- Es ideal para mantener un sistema limpio y personalizar las herramientas que necesitas para tus proyectos.
+- 🔗 [Installing Miniconda Docs](https://docs.anaconda.com/miniconda/install/)
 
-#### **Diferencia entre MAE y RMSE:**
-- **MAE:** Trata todos los errores con igual peso.
-- **RMSE:** Penaliza más los errores grandes. Útil cuando estos son críticos.
+### **Instalación**
 
-### **Métricas en Clasificación**
+1. **Descarga el instalador para macOS:**  
+   Según tu arquitectura, utiliza el siguiente comando en la terminal para descargar Miniconda:
 
-- **Accuracy**
-   - Proporción de predicciones correctas sobre el total.
-   - Ejemplo: Si un modelo predice correctamente 90 de 100 correos como "spam" o "no spam", la precisión es 90%.
-- **Precision**
-   - Proporción de predicciones positivas que son realmente correctas.
-   - Fórmula: \( \text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}} \)
-   - Útil cuando es importante minimizar los **falsos positivos** (por ejemplo, predecir una enfermedad que no existe).
-- **Recall (sensibilidad)**
-   - Proporción de verdaderos positivos correctamente identificados.
-   - Fórmula: \( \text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}} \)
-   - Útil cuando es crucial minimizar los **falsos negativos** (por ejemplo, no detectar una enfermedad grave).
-- **F1-Score**
-   - Promedio armónico de precisión y recall. Balancea la importancia de ambas métricas.
-   - Fórmula: \( F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}} \)
-- **ROC/AUC** (Receiver Operating Characteristic / Área bajo la curva)
-   - La curva ROC compara la tasa de verdaderos positivos frente a la tasa de falsos positivos a diferentes umbrales.
-   - El AUC mide el área bajo la curva ROC:
-     - **1.0:** Predicciones perfectas.
-     - **0.5:** Modelo aleatorio.
-     - **0.0:** Predicciones 100% incorrectas.
+   - **Apple Silicon (M1/M2):**
 
-#### **Errores Comunes:**
-- **Falsos negativos:** Predice "negativo" pero es "positivo".
-  - Ejemplo: No detectar un peatón en un sistema de visión para coches autónomos.
-- **Falsos positivos:** Predice "positivo" pero es "negativo".
-  - Ejemplo: Diagnosticar erróneamente una enfermedad.
+     ```bash
+     curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+     ```
 
-### **Métricas en Problemas de Recomendación**
-Los problemas de recomendación presentan desafíos únicos, ya que el objetivo no es solo acertar, sino también optimizar el orden de las sugerencias.
+   - **Intel:**
+     ```bash
+     curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+     ```
 
-- **Precisión en K (Precision @ K):**
-   - Proporción de recomendaciones correctas dentro de las **K mejores opciones**.
-   - Ejemplo: Si un modelo recomienda 5 productos y 3 son relevantes, la precisión en K es \( \frac{3}{5} = 0.6 \).
+2. **Ejecuta el instalador:**  
+   Instala Miniconda ejecutando el script descargado:
 
-- **Cobertura:**
-   - Proporción de elementos del conjunto total que son recomendados al menos una vez.
+   - Para Apple Silicon:
+     ```bash
+     bash Miniconda3-latest-MacOSX-arm64.sh
+     ```
+   - Para Intel:
+     ```bash
+     bash Miniconda3-latest-MacOSX-x86_64.sh
+     ```
 
-- **Índice de Diversidad:**
-   - Evalúa cuán variadas son las recomendaciones. Ayuda a evitar sugerencias repetitivas.
+3. **Sigue las instrucciones de instalación:**
 
-#### **Método de Evaluación:**
-- **División Temporal:**
-  - Usar datos históricos para entrenar el modelo (por ejemplo, datos de 2010-2018).
-  - Probar el modelo con datos recientes (2019) para simular su rendimiento en el futuro.
+   - Presiona **Enter** para revisar y aceptar el acuerdo de licencia.
+   - Acepta la ubicación predeterminada para la instalación (generalmente `~/miniconda3`), o elige una ruta personalizada.
+   - El instalador te preguntará si deseas inicializar Conda automáticamente al abrir la terminal:
+     - Escribe `yes` para añadir Conda al perfil de tu shell, lo que facilita el uso de comandos de Conda.
+     - Si eliges `no`, deberás configurarlo manualmente más adelante.
+
+4. **Cierra y vuelve a abrir tu terminal:**  
+   Esto aplica los cambios realizados durante la instalación.
+
+5. **Verifica la instalación:**  
+   Asegúrate de que Conda esté instalado correctamente ejecutando:
+   ```bash
+   conda --version
+   ```
+   Si todo está en orden, deberías ver algo como `conda 24.9.2`.
+
+### **Ventajas de Miniconda**
+
+- **Ligereza:** A diferencia de Anaconda, Miniconda no incluye decenas de paquetes preinstalados. Esto reduce el consumo de espacio en disco y permite una mayor personalización.
+- **Flexibilidad:** Puedes instalar solo las bibliotecas necesarias para tu proyecto, optimizando recursos y minimizando conflictos entre dependencias.
+- **Compatibilidad:** Funciona en múltiples sistemas operativos (Windows, macOS, Linux) y admite lenguajes más allá de Python, como R y Julia.
+- **Velocidad en entornos personalizados:** Crear entornos específicos con Miniconda es rápido y eficiente, lo que facilita la reproducción de proyectos en otros sistemas.
+- **Soporte de Canales:** Permite utilizar canales como `conda-forge`, ampliando la disponibilidad de paquetes actualizados y especializados.
 
 ---
 
-### **Elección de la Métrica**
-La métrica adecuada depende del contexto:
-- **Clasificación:** Usa F1-Score o AUC si el balance entre precisión y recall es importante.
-- **Regresión:** Usa MAE si los errores pequeños son más importantes que los grandes; RMSE si los errores grandes son críticos.
-- **Recomendación:** Usa Precision @ K si el orden de las recomendaciones es relevante.
+## **6. Cómo Saber si Tienes Conda o Miniconda Instalados**
+
+Para verificar si ya tienes Conda o Miniconda instalados en tu equipo, sigue estos pasos:
+
+1. **Verifica Conda:**
+   En tu terminal, ejecuta el siguiente comando:
+
+   ```bash
+   conda --version
+   ```
+
+   - Si Conda está instalado, verás algo como: `conda 24.9.2` (el número puede variar).
+   - Si no está instalado, la terminal mostrará un error indicando que el comando no se encuentra.
+
+2. **Verifica Miniconda:**
+   Miniconda utiliza Conda como núcleo, por lo que el comando anterior también confirma su instalación. Sin embargo, puedes verificar su presencia buscando la carpeta de instalación típica:
+
+   - En **macOS/Linux**:
+     ```bash
+     ls ~/miniconda3
+     ```
+   - En **Windows**:  
+     Busca `Miniconda3` en el directorio de instalación (generalmente `C:\Users\TuUsuario\Miniconda3`).
+
+3. **Verifica si Conda está en tu PATH:**
+   Si Conda no responde pero está instalado, puede que no esté en el `PATH`. Para verificar:
+   ```bash
+   echo $PATH
+   ```
+   Busca una ruta como `/home/usuario/miniconda3/bin` (en macOS/Linux) o `C:\Users\TuUsuario\Miniconda3\Scripts` (en Windows).
+
+> **Si Conda o Miniconda No Están Instalados**: Si no están instalados, sigue los pasos de instalación indicados en la sección ["5. Miniconda para macOS"](#5-miniconda-para-macos) o consulta las guías específicas de instalación para tu sistema operativo.
 
 ---
 
-## **Paso 4: Features o Características**
+## **7. Pasos para Configurar un Proyecto de ML en Mac**
 
-Las **features** representan los atributos de los datos que se utilizan para construir un modelo de Machine Learning. Identificar, seleccionar y crear características relevantes es crucial para mejorar el rendimiento del modelo. Existen tres tipos principales de características:
+Estos son los pasos clave para iniciar un proyecto de Machine Learning utilizando **Conda**, asegurando un entorno bien configurado y aislado.
 
-### **Tipos de Features:**
-1. **Categorical (Categóricas):**
-   - Representan categorías o grupos.
-   - Ejemplo: Sexo del paciente (hombre/mujer) o si un cliente realizó una compra (sí/no).
+**1. Crear la Carpeta del Proyecto**
 
-2. **Continuous (Continuas o Numéricas):**
-   - Representan valores numéricos.
-   - Ejemplo: Frecuencia cardíaca promedio o número de veces que un usuario inició sesión.
+- Navega al directorio donde deseas guardar tu proyecto y crea una carpeta específica:
+  ```bash
+  mkdir nombre-del-proyecto
+  cd nombre-del-proyecto
+  ```
 
-3. **Derived (Derivadas):**
-   - Características creadas a partir de los datos existentes mediante ingeniería de características (feature engineering).
-   - Ejemplo: 
-     - Combinar fechas y tiempos para calcular "tiempo desde el último inicio de sesión".
-     - Transformar fechas en "día laboral (sí/no)".
+**2. Crear un Entorno con una Versión Específica de Python**
 
-![Ejemplo Features](/assets/section-3/features.png)
+- Utiliza Conda para crear un entorno virtual que incluya las bibliotecas necesarias desde el inicio:
+  ```bash
+  conda create --prefix ./env python=3.9 pandas numpy matplotlib scikit-learn
+  ```
 
-### **Consideraciones Importantes:**
-- **Consistencia en el entrenamiento y la producción:** Las características utilizadas en la fase de entrenamiento deben representar fielmente las condiciones del entorno real donde se usará el modelo.
-- **Colaboración con expertos en la materia:** Incorporar conocimientos del dominio para identificar y diseñar características relevantes.
-- **Cobertura de datos:** Dar preferencia a características que cubran la mayor cantidad de muestras. Si solo un 10% de los datos contienen una característica, podría no ser útil para el modelo.
-- **Evitar fugas de datos (feature leakage):** Si el modelo alcanza un rendimiento perfecto, podría estar utilizando información del conjunto de prueba durante el entrenamiento, lo cual no refleja un uso realista.
+**¿Qué sucede al ejecutar este comando?**
 
-#### **Uso de Features en Modelos:**
-- **Establecimiento de una línea base:** 
-  - Usar conocimiento del dominio para crear predicciones iniciales simples.
-  - Ejemplo: "Un cliente que no inicia sesión en tres semanas tiene un 80% de probabilidad de cancelar su suscripción".
-- **Transformación en números:** 
-  - Todas las características, incluidas imágenes o texto, deben convertirse a valores numéricos antes de ser utilizadas en un modelo.
+- **`--prefix ./env`:** Indica que el entorno se guardará en la carpeta del proyecto (`./env`).
+- **`python=3.9`:** Instala una versión específica de Python.
+- **Bibliotecas adicionales (`pandas numpy matplotlib scikit-learn`):** Estas herramientas esenciales para proyectos de ciencia de datos se instalan automáticamente.
+- Al ejecutar el comando, Conda descargará los paquetes y resolverá dependencias. Cuando se te solicite, confirma la instalación introduciendo `y` y presionando **Enter**.
 
-> Las características son la base de cualquier modelo de Machine Learning. Una buena selección y diseño de features puede marcar la diferencia entre un modelo mediocre y uno excelente. Este paso requiere tanto conocimientos técnicos como colaboración con expertos en el dominio del problema.
+**3. Activar el Entorno**
 
----
+- Una vez creado, activa el entorno para trabajar en un entorno aislado:
+  ```bash
+  conda activate ./env
+  ```
 
-## **Paso 5: Modelado**
+> **Nota:** Si activas el entorno correctamente, deberías ver algo como `(env)` al inicio del prompt de tu terminal, indicando que estás dentro del entorno.
 
-El modelado es el núcleo de Machine Learning y consiste en convertir datos procesados en predicciones útiles. Este proceso se divide en las siguientes etapas:
+**4. Verificar los Entornos Disponibles**
 
-### **1. **División de datos (splitting):**
-- Separar el conjunto de datos en **entrenamiento**, **validación** y **prueba** para evitar sobreajuste.
-- Proporción típica: 70% entrenamiento, 15% validación, 15% prueba.
+- Lista todos los entornos instalados en tu sistema para confirmar que el nuevo entorno está activo:
+  ```bash
+  conda env list
+  ```
+  - Verás una lista de entornos y sus ubicaciones. El entorno activo estará marcado con un `*`.
 
-![](/assets/section-3/splitting-data.png)
+**5. Añadir el Entorno al Proyecto**
 
-> **Conjunto de datos de entrenamiento:**
-> - Se utiliza para entrenar el modelo.
-> - Lo habitual es asignar el **70-80%** de los datos.
-> **Conjunto de datos de validación/desarrollo:**
-> - Se utiliza para ajustar los hiperparámetros del modelo y evaluar los experimentos.
-> - Lo habitual es asignar el **10-15%** de los datos.
-> **Conjunto de datos de prueba:**
-> - Se utiliza para probar y comparar el modelo.
-> - Lo habitual es asignar el **10-15%** de los datos.
+- **Opcional:** Para asegurar que el entorno está documentado en el proyecto, exporta la configuración a un archivo YAML:
+  ```bash
+  conda env export > environment.yml
+  ```
+  Este archivo se puede compartir para que otros usuarios repliquen el entorno con:
+  ```bash
+  conda env create -f environment.yml
+  ```
 
-### **2. Elección del Modelo *(Training)***
+**6. Instalar Bibliotecas Adicionales**
 
-- Elegir un algoritmo adecuado según el tipo de problema (regresión, clasificación, clustering, etc.).
-- Seleccionar el modelo adecuado implica considerar los siguientes factores clave:
+- Si necesitas más bibliotecas en el futuro, puedes instalarlas fácilmente dentro del entorno activado:
+  ```bash
+  conda install nombre-de-la-biblioteca
+  ```
 
-1. **Interpretabilidad y facilidad de depuración:**
-   - ¿Por qué el modelo tomó una decisión específica?  
-   - ¿Qué tan fácil es identificar y corregir errores?
+**7. Desactivar el Entorno**
 
-2. **Cantidad de datos:**
-   - ¿Cuántos datos tienes disponibles?  
-   - ¿Es probable que esta cantidad aumente en el futuro?
+- Cuando termines de trabajar, desactiva el entorno para volver al sistema base:
+  ```bash
+  conda deactivate
+  ```
 
-3. **Limitaciones de entrenamiento y predicción:**
-   - ¿Cuánto tiempo y recursos computacionales tienes para entrenar y usar el modelo?
+**8. Eliminar el Entorno (si es necesario)**
 
-> **Recomendación:** Comienzar con modelos simples. Los modelos complejos pueden ofrecer mejoras marginales a costa de mayores tiempos de entrenamiento y predicción.
+- Para borrar un entorno específico, usa:
+  ```bash
+  conda remove --prefix ./env --all
+  ```
 
-**Tipos de Modelos:**
-- **Modelos lineales (p. ej., regresión logística):**
-  - Rápidos, fáciles de interpretar y depurar.
-  - Útiles para problemas simples y datos lineales.
+![Project Setup Environment](/assets/section-4/project-setup.png)
 
-- **Modelos basados en árboles y boosting (p. ej., [Random Forest](https://towardsdatascience.com/understanding-random-forest-58381e0602d2), [XGBoost](https://xgboost.ai/?ref=mrdbourke.com), [CatBoost](https://catboost.ai/?ref=mrdbourke.com)):**
-  - Ideales para datos estructurados (tablas).
-  - Suelen ofrecer un buen rendimiento en la mayoría de los casos prácticos.
-
-- **Redes neuronales profundas:**
-  - Adecuadas para datos no estructurados (imágenes, audio, texto).
-  - Requieren más recursos y son más difíciles de depurar, pero son efectivas en problemas complejos.
-
-- **Transfer Learning (aprendizaje por transferencia):**
-  - Aprovecha modelos preentrenados (disponibles en plataformas como [PyTorch Hub](https://pytorch.org/hub/?ref=mrdbourke.com), [TensorFlow Hub](https://www.tensorflow.org/hub?ref=mrdbourke.com&hl=es), [ModelZoo](https://modelzoo.co/?ref=mrdbourke.com) y [Fast.ai](https://github.com/fastai/fastai?ref=mrdbourke.com)) para reducir tiempos de entrenamiento y mejorar la eficiencia.
-  - Combina las ventajas de los modelos profundos y lineales.
-
-
-### **3. Mejora y Ajuste del Modelo (Tuning and improving) *(Validation)***
-
-Los modelos pueden mejorarse ajustando hiperparámetros y configuraciones específicas. Este proceso se denomina **tuning** y puede incluir:
-
-1. **Hiperparámetros:**
-   - **Tasa de aprendizaje:** Ajusta la velocidad a la que el modelo aprende.
-   - **Optimizador:** Algoritmo que controla cómo se actualizan los pesos del modelo.
-
-2. **Específico del modelo:**
-   - Número de árboles en Random Forest.
-   - Número y tipo de capas en redes neuronales.
-
-**Automatización:**  
-Muchas herramientas modernas automatizan el ajuste de hiperparámetros, lo que mejora la eficiencia y reproducibilidad de los modelos.
-
-**Prioridad:**  
-- **Reproducibilidad:** Documentar los pasos de ajuste para que puedan replicarse.
-- **Eficiencia:** Minimizar el tiempo de entrenamiento para probar más ideas rápidamente.
-
-
-### **4. Comparación de Modelos *(Test)***
-
-- Evaluar múltiples algoritmos y elegir el que mejor se ajuste a los datos con base en métricas relevantes.
-- Comparar modelos requiere consistencia en los datos utilizados durante el entrenamiento y la evaluación.
-- Es recomendable seguir estas reglas:
-   - **Entrenar modelos con los mismos datos de entrenamiento (X).**
-   - **Evaluarlos con los mismos datos de prueba o validación (Y).**
-   - **Mantener métricas consistentes:** Comparar modelos con la misma métrica de evaluación (por ejemplo, accuracy, F1-score, RMSE, etc.).
-
-> **Nota:**  
-> - Cambiar los datos de entrenamiento o validación puede generar comparaciones inválidas ("manzanas con naranjas").  
-> - Asegúrate de que los resultados reflejen las diferencias en los modelos, no en los datos.
+> Estos pasos te permiten configurar un entorno limpio y aislado para cada proyecto. Esto asegura **compatibilidad de dependencias y evita conflictos** con otros proyectos en tu sistema.
 
 ---
 
-### **Overfitting vs. Underfitting**
+## **8. Usar el Entorno en Jupyter Notebook**
 
-Al entrenar modelos de Machine Learning, el equilibrio entre **overfitting** y **underfitting** es clave para obtener resultados que generalicen bien a nuevos datos. Ambos conceptos representan extremos problemáticos en el proceso de modelado:
+Una vez configurado tu entorno de Conda, puedes integrarlo con **Jupyter Notebook** para realizar análisis interactivos y trabajar en tus proyectos de Machine Learning de manera eficiente.
 
-### **Overfitting**
-**Definición:** Ocurre cuando un modelo se ajusta demasiado a los datos de entrenamiento, aprendiendo incluso patrones irrelevantes o ruido. Como resultado, funciona muy bien con los datos de entrenamiento, pero falla al generalizar con datos nuevos.
-**Causas comunes:**
-- Modelo **demasiado complejo** para la cantidad o calidad de los datos.
-- Uso excesivo de características **irrelevantes**.
-- Entrenamiento del modelo durante demasiadas iteraciones.
-**Indicadores:**
-- Muy baja pérdida en el conjunto de entrenamiento pero alta pérdida en el conjunto de prueba.
-- Métricas de evaluación significativamente mejores en entrenamiento que en prueba.
-**Cómo mitigarlo:**
-- Usar regularización (p. ej., L1, L2 o dropout en redes neuronales).
-- Simplificar el modelo (menos parámetros o menos capas en redes profundas).
-- Incrementar la cantidad o calidad de los datos de entrenamiento.
-- Utilizar técnicas como validación cruzada para evaluar el modelo durante el entrenamiento.
+**1. Instalar Jupyter Notebook en el Entorno**
 
-### **Underfitting**
-**Definición:** Ocurre cuando el modelo no logra capturar los patrones importantes en los datos. Esto lleva a un desempeño pobre tanto en entrenamiento como en prueba.
-**Causas comunes:**
-- Modelo demasiado **simple** para la complejidad de los datos.
-- **Insuficiente** tiempo de entrenamiento o mala configuración de hiperparámetros.
-- Selección **incorrecta** de características (falta de información relevante).
-**Indicadores:**
-- Alta pérdida tanto en el conjunto de entrenamiento como en el de prueba.
-- Métricas de evaluación bajas en ambos conjuntos.
-**Cómo mitigarlo:**
-- Incrementar la complejidad del modelo (más parámetros o capas).
-- Asegurarse de que los datos incluyan suficiente información relevante para el problema.
-- Ajustar hiperparámetros como la tasa de aprendizaje o la arquitectura del modelo.
+- Si Jupyter Notebook no está instalado en tu entorno, asegúrate de añadirlo:
+  ```bash
+  conda install notebook
+  ```
+  Esto instalará Jupyter Notebook y las dependencias necesarias dentro del entorno activo.
 
-#### **Ejemplo Visual**
-|               | **Entrenamiento** | **Prueba**         | **Problema**         |
-|---------------|--------------------|--------------------|----------------------|
-| **Overfitting** | Alta precisión     | Baja precisión      | Generalización pobre.|
-| **Underfitting**| Baja precisión     | Baja precisión      | Modelo poco útil.    |
-| **Buen ajuste** | Alta precisión     | Alta precisión      | Modelo equilibrado.  |
+**2. Añadir el Entorno a Jupyter como un Kernel**
 
-![](/assets/section-3/over-under-fitting.png)
+- Instala la biblioteca `ipykernel` para registrar el entorno en Jupyter:
 
-> El objetivo en el modelado es **encontrar un balance** donde el modelo capture patrones significativos (evitando underfitting) sin ajustarse en exceso a los datos de entrenamiento (evitando overfitting). Técnicas como la **validación cruzada, la regularización y una cuidadosa selección del modelo** son esenciales para lograr este equilibrio.
+  ```bash
+  conda install ipykernel
+  ```
 
-### Interpretación del rendimiento del modelo
+- Registra el entorno como un kernel en Jupyter:
+  ```bash
+  python -m ipykernel install --user --name=nombre-del-entorno --display-name "Python (nombre-del-entorno)"
+  ```
+  - **`--name`:** Nombre interno del entorno en Jupyter (usa el mismo nombre del entorno Conda).
+  - **`--display-name`:** Nombre visible en Jupyter Notebook.
 
-**Bajo rendimiento en los datos de entrenamiento:** El modelo no ha aprendido correctamente y está underfitting. Intenta usar un modelo diferente, mejorar el modelo existente ajustando hiperparámetros o recopilar más datos.
+**3. Iniciar Jupyter Notebook**
 
-**Alto rendimiento en los datos de entrenamiento pero bajo rendimiento en los datos de prueba:** Esto indica que el modelo no generaliza bien y podría estar overfitting los datos de entrenamiento. Intenta usar un modelo más simple o asegúrate de que los datos de prueba sean similares en estilo a los datos de entrenamiento.
+- Desde el directorio del proyecto, inicia Jupyter Notebook con:
+  ```bash
+  jupyter notebook
+  ```
+  Esto abrirá una interfaz web donde podrás gestionar y crear notebooks.
 
-**Mejor rendimiento en los datos de prueba que en los datos de entrenamiento:** Esto podría indicar que los datos de prueba están filtrándose en los datos de entrenamiento (división incorrecta de datos) o que has pasado demasiado tiempo optimizando el modelo para el conjunto de prueba. Asegúrate de mantener siempre separados los conjuntos de entrenamiento y prueba, y evita optimizar el rendimiento del modelo en los datos de prueba (usa los conjuntos de entrenamiento y validación para mejorar el modelo).
+**4. Seleccionar el Entorno en Jupyter**
 
-**Bajo rendimiento en producción (entorno real):** Esto indica que existe una diferencia entre los datos usados durante el entrenamiento y prueba, y los datos reales en producción. Asegúrate de que los datos utilizados durante la experimentación sean representativos de los datos que el modelo encontrará en producción.
+1. Crea o abre un notebook nuevo.
+2. En la barra superior, haz clic en **Kernel > Change Kernel**.
+3. Selecciona el entorno que registraste (aparecerá como `Python (nombre-del-entorno)`).
 
----
+**5. Verificar el Entorno**
+Para confirmar que estás usando el entorno correcto, ejecuta el siguiente comando dentro de una celda de Jupyter:
 
-## **Paso 6: Experimentación y Mejora**
+```python
+!which python
+```
 
-La experimentación es esencial para optimizar el rendimiento del modelo. Los aspectos clave incluyen:
+Deberías ver la ruta al Python dentro de tu entorno Conda, algo como:
 
-1. **Validación cruzada (Cross-validation):**
-   - Dividir los datos en varios subconjuntos para probar el modelo de manera consistente.
+```
+/Users/tu-usuario/nombre-del-proyecto/env/bin/python
+```
 
-2. **Técnicas de búsqueda de hiperparámetros:**
-   - **Grid Search:** Prueba exhaustiva de combinaciones de parámetros.
-   - **Random Search:** Selección aleatoria de combinaciones para mayor eficiencia.
+**6. Instalar Bibliotecas Adicionales desde Jupyter**
+Si necesitas instalar nuevas bibliotecas mientras trabajas, puedes hacerlo directamente desde una celda de Jupyter usando:
 
-3. **Documentación de experimentos:**
-   - Registrar cambios en parámetros, métricas y observaciones para análisis comparativo.
+```python
+!conda install nombre-de-la-biblioteca -y
+```
+
+**7. Cerrar Jupyter Notebook**
+Cuando termines de trabajar, puedes cerrar Jupyter Notebook desde la interfaz web o detenerlo desde la terminal con `Ctrl + C`.
+
+> 🎯 Estos pasos permiten usar el entorno Conda como un kernel en Jupyter Notebook, asegurando que todo el trabajo en tus notebooks utilice las bibliotecas y configuraciones específicas del proyecto.
 
 ---
 
-## **Herramientas y Recursos Clave**
+## **9. Compartir tu Entorno Conda**
 
-En esta sección, hemos explorado cómo abordar el modelado de datos en Machine Learning de manera estructurada, utilizando un marco de seis pasos. Para llevar a cabo cada etapa del proceso de manera efectiva, contamos con un conjunto de **herramientas y recursos** esenciales:
+Puede llegar un momento en el que necesites compartir el contenido de tu entorno Conda. Esto puede ser útil para compartir el flujo de trabajo de un proyecto con un colega o con alguien que necesite configurar su sistema para tener acceso a las mismas herramientas que tú.
 
-#### **Sistema**
-- **Anaconda:**
-   - Entorno integrado que facilita la gestión de paquetes y entornos virtuales.
-   - Ideal para mantener un espacio de trabajo limpio y organizado durante todo el proyecto.
-   - **Uso:** Configuración inicial del entorno para la **definición del problema** y la **preparación de datos**.
+Hay un par de formas de hacerlo:
 
-- **Jupyter Notebook:**
-   - Herramienta interactiva para escribir, ejecutar y documentar código.
-   - Facilita el análisis exploratorio, la experimentación y la presentación de resultados.
-   - **Uso:** Durante la **preparación de datos**, la **experimentación** y la **visualización** de resultados.
+1. **Compartir toda la carpeta del proyecto**, incluida la carpeta del entorno que contiene todos los paquetes de Conda.
+2. **Compartir un archivo `.yml`** (se pronuncia _YAM-L_) que describa tu entorno Conda.
 
-#### **Framework y Guías**
-- **[6-Step Field Guide](https://www.mrdbourke.com/a-6-step-field-guide-for-building-machine-learning-projects/):**
-  - Una referencia estructurada para abordar proyectos de Machine Learning.
-  - Proporciona un marco claro y repetible para todos los pasos del proceso.
+#### **Método 1: Compartir la Carpeta Completa**
 
-#### **Bibliotecas**
-- **Scikit-learn:**
-   - Algoritmos clásicos de ML para clasificación, regresión y clustering.
-   - Incluye herramientas para dividir datos, ajustar modelos y evaluar resultados.
-   - **Uso:** Modelado, ajuste de hiperparámetros y comparación de modelos.
+- **Ventaja:** Es un método sencillo. Comparte la carpeta, activa el entorno y ejecuta el código.
+- **Desventaja:** Las carpetas de entorno pueden ser muy grandes y difíciles de compartir.
 
-- **TensorFlow y PyTorch:**
-   - Frameworks avanzados para construir y entrenar redes neuronales.
-   - TensorFlow es ideal para modelos escalables y producción; PyTorch es preferido para investigación y experimentación.
-   - **Uso:** Modelado avanzado y experimentación con datos no estructurados (imágenes, texto, audio).
+#### **Método 2: Compartir un Archivo `.yml`**
 
-- **Pandas y NumPy:**
-   - **Pandas:** Manipulación de datos tabulares, limpieza y transformación.
-   - **NumPy:** Cálculos numéricos eficientes, como operaciones matriciales.
-   - **Uso:** En la **preparación de datos** y la creación de características.
+Un archivo `.yml` es básicamente un archivo de texto con instrucciones que indican a Conda cómo configurar un entorno. Este método es más ligero y práctico para compartir configuraciones.
 
-- **dmlc XGBoost:**
-   - Biblioteca especializada en algoritmos de boosting, ideal para datos estructurados.
-   - Ofrece alta precisión y eficiencia en problemas de clasificación y regresión.
-   - **Uso:** Modelado y experimentación con algoritmos basados en árboles.
+**Ejemplo: Exportar un entorno a un archivo `.yml`**
+Si tienes un entorno en `/Users/rocio/Desktop/project_1/env` y deseas exportarlo como un archivo `environment.yml`, usa el siguiente comando:
 
-#### **Visualización**
-- **Matplotlib y Seaborn:**
-   - Creación de gráficos estáticos para análisis y presentación.
-   - **Uso:** Durante la **exploración de datos** y la interpretación de resultados.
+```bash
+conda env export --prefix /Users/rocio/Desktop/project_1/env > environment.yml
+```
 
-- **Plotly:**
-   - Herramienta de visualización interactiva, útil para análisis más dinámicos.
-   - **Uso:** Presentación de resultados y visualización avanzada en la etapa de **experimentación**.
+Al ejecutar este comando, se generará un archivo `.yml` llamado `environment.yml`.
+
+Un archivo `.yml` de ejemplo podría verse así:
+
+```yaml
+name: my_ml_env
+dependencies:
+  - numpy
+  - pandas
+  - scikit-learn
+  - jupyter
+  - matplotlib
+```
+
+El contenido del archivo dependerá de los paquetes instalados en tu entorno.
+
+#### **Crear un Entorno desde un Archivo `.yml`**
+
+Para crear un nuevo entorno llamado `env_from_file` a partir de un archivo llamado `environment.yml`, utiliza el siguiente comando:
+
+```bash
+conda env create --file environment.yml --name env_from_file
+```
+
+Esto configurará un nuevo entorno en tu sistema con los paquetes especificados en el archivo `.yml`.
+
+#### **Más Información**
+
+- **Para compartir entornos:** Consulta la [documentación de Conda sobre compartir entornos](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment).
+- **Para crear entornos desde un archivo `.yml`:** Consulta la [documentación de Conda sobre la creación de entornos desde archivos `.yml`](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file).
 
 ---
 
-## **Recurso Opcional: Elements of AI**
+## **10. Jupyter Notebook**
 
-> Un recurso adicional es la página web de **[Elements of AI](https://www.elementsofai.com/)**. Tiene excelentes explicaciones introductorias de muchos conceptos relacionados con el aprendizaje automático, la ciencia de datos y la inteligencia artificial.
+**Jupyter Notebook** es una herramienta interactiva ampliamente utilizada en Ciencia de Datos y Machine Learning. Permite combinar código ejecutable, visualizaciones y texto en un solo documento, ideal para análisis exploratorio, desarrollo de modelos y documentación.
+
+### **Uso Básico**
+
+1. **Iniciar Jupyter Notebook:**
+
+   ```bash
+   jupyter notebook
+   ```
+
+   Esto abre una interfaz web desde donde puedes crear y gestionar notebooks.
+
+2. **Seleccionar un Kernel:**
+
+   - Desde el menú de Jupyter, selecciona el kernel correspondiente a tu entorno de Conda.
+   - Esto asegura que el código se ejecute con las bibliotecas instaladas en ese entorno.
+
+3. **Escribir y Ejecutar Código:**
+
+   - Divide el trabajo en celdas que pueden contener texto o código Python.
+   - Ejecuta una celda con `Shift + Enter`.
+
+4. **Guardar y Exportar:**
+   - Guarda tu trabajo como un archivo `.ipynb`.
+   - Exporta como HTML o PDF si necesitas compartir resultados.
+
+> **Recursos adicionales:**
+
+- [Jupyter Notebook Documentation](https://jupyter-notebook.readthedocs.io/en/stable/)
+- [Tutorial para principiantes](https://www.dataquest.io/blog/jupyter-notebook-tutorial/)
+
+> 🎯 Jupyter Notebook es esencial para trabajar de forma colaborativa y documentar todo el flujo de trabajo en proyectos de ML.
+
+---
+
+## **11. Atajos Esenciales para Jupyter Notebook**
+
+Conocer los atajos de teclado en **Jupyter Notebook** puede aumentar significativamente tu productividad.
+
+### **Modo de Edición (dentro de una celda):**
+
+- `Ctrl + Enter`: Ejecuta la celda actual sin mover el cursor.
+- `Shift + Enter`: Ejecuta la celda y mueve el cursor a la siguiente.
+- `Alt + Enter`: Ejecuta la celda y crea una nueva celda debajo.
+- `Esc`: Cambia al modo de comando.
+
+### **Modo de Comando (fuera de una celda):**
+
+- `A`: Inserta una celda arriba de la actual.
+- `B`: Inserta una celda debajo de la actual.
+- `D + D`: Elimina la celda seleccionada.
+- `M`: Convierte la celda en Markdown.
+- `Y`: Convierte la celda en código.
+- `Z`: Deshacer eliminación de una celda.
+
+### **Atajos Globales:**
+
+- `Ctrl + S`: Guarda el notebook.
+- `Shift + M`: Combina celdas seleccionadas.
+- `Ctrl + Shift + -`: Divide una celda en el punto del cursor.
+
+> 📌 Para más atajos, presiona `H` en el modo de comando para abrir la lista completa.
+
+---

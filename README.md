@@ -102,11 +102,13 @@ El curso está dividido en 20 secciones. Este es un resumen del progreso realiza
 
 | Sección | Título                                                | Descripción breve                                                                            | Estado |
 | ------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------ |
-| 1       | Introducción                                          | Introducción al Curso                                                                        | ✅     |
-| 2       | [Machine Learning 101](/docs/section_02.md)           | Qué es ML y tipos de ML                                                                      | ✅     |
-| 3       | [ML and Data Science Framework](/docs/section_03.md)  | Framework de 6 pasos, features, modelado, overfitting vs. underfitting, y herramientas clave | ✅     |
-| 4       | The 2 Parths                                          |                                                                                              | 🚧     |
-| 5       | [Data Science Environment Setup](/docs/section_05.md) |                                                                                              | 🚧     |
+| 1       | [Machine Learning 101](/docs/section_01.md)           | Qué es ML y tipos de ML                                                                      | ✅     |
+| 2       | [ML and Data Science Framework](/docs/section_02.md)  | Framework de 6 pasos, features, modelado, overfitting vs. underfitting, y herramientas clave | ✅     |
+| 3       | [Data Science Environment Setup](/docs/section_03.md) | Configuración de entornos, herramientas clave y uso de Jupyter Notebook                      | ✅     |
+| 4       | Pandas                                                |                                                                                              | ❌     |
+| 5       | Numpy                                                 |                                                                                              | ❌     |
+| 6       | Matplotlib                                            |                                                                                              | ❌     |
+| 7       | Scikit-learn                                          |                                                                                              | ❌     |
 | ...     | ...                                                   | ...                                                                                          | ...    |
 
 - **✅ Completado**
