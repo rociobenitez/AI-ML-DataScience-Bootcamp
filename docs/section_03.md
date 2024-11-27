@@ -12,7 +12,7 @@ Puedes seguir esta guía para asegurar un entorno limpio, reproducible y escalab
 
 ---
 
-## **Índice**
+### **Índice**
 
 1. [¿Qué es Conda?](#1-qué-es-conda)
 2. [Conda CheatSheet](#2-conda-cheatsheet)
@@ -29,7 +29,7 @@ Puedes seguir esta guía para asegurar un entorno limpio, reproducible y escalab
 
 ---
 
-## **1. ¿Qué es Conda?**
+### **1. ¿Qué es Conda?**
 
 Conda es un **gestor de entornos y paquetes** de código abierto. Fue diseñado inicialmente para Python, pero también gestiona otros lenguajes como R. Sus principales características son:
 
@@ -44,11 +44,11 @@ Conda es un **gestor de entornos y paquetes** de código abierto. Fue diseñado 
 
 > 🔗 [Conda Documentación](https://docs.conda.io/en/latest/)
 
-## **2. Conda CheatSheet**
+### **2. Conda CheatSheet**
 
 El cheat sheet es un resumen visual y rápido con los comandos más comunes de Conda. Es una herramienta muy útil para tener a mano mientras trabajas con Conda.
 
-### Comandos básicos:
+#### Comandos básicos:
 
 - **Gestión de entornos:**
 
@@ -68,11 +68,11 @@ El cheat sheet es un resumen visual y rápido con los comandos más comunes de C
 
 > 🔗 Consulta el [Conda CheatSheet](/references/conda-cheatsheet.pdf) para más comandos.
 
-## **3. Getting started with Conda**
+### **3. Getting started with Conda**
 
 Esta guía introduce cómo empezar a usar Conda, desde su instalación hasta el uso básico.
 
-### Pasos iniciales:
+#### Pasos iniciales:
 
 1. **Instalación de Miniconda o Anaconda:**
 
@@ -92,21 +92,21 @@ Esta guía introduce cómo empezar a usar Conda, desde su instalación hasta el 
 
 > Para más detalles, revisa la guía completa: [Getting started with conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
 
-## **4. Preparando el equipo para ML**
+### **4. Preparando el equipo para ML**
 
 Configurar tu equipo correctamente es crucial para garantizar que los proyectos de Machine Learning y Ciencia de Datos se desarrollen de manera eficiente y sin conflictos entre paquetes.
 
 El artículo [Getting your computer ready for machine learning](https://www.mrdbourke.com/get-your-computer-ready-for-machine-learning-using-anaconda-miniconda-and-conda/) de Daniel Bourke describe cómo usar herramientas como **Anaconda**, **Miniconda** y **Conda** para preparar tu entorno de trabajo.
 
-### **Resumen Técnico:**
+#### **Resumen Técnico:**
 
 1. **Anaconda:** Ideal para principiantes porque incluye un ecosistema completo con herramientas preinstaladas.
 2. **Miniconda:** Más ligera y flexible, adecuada para usuarios avanzados que prefieren instalar solo lo necesario.
 3. **Conda:** El motor que impulsa ambas plataformas, permite gestionar entornos y dependencias de manera eficiente.
 
-![](/assets/section-4/conda-miniconda-anaconda.png)
+<img src="/assets/section-4/conda-miniconda-anaconda.png" alt="Conda, Miniconda y Anaconda" width="600">
 
-### **Recomendaciones Prácticas:**
+#### **Recomendaciones Prácticas:**
 
 - Usa **Miniconda** si quieres mantener tu equipo más limpio y personalizar las herramientas necesarias.
 - Crea **entornos específicos** para cada proyecto para evitar conflictos de dependencias.
@@ -114,7 +114,7 @@ El artículo [Getting your computer ready for machine learning](https://www.mrdb
 
 > 🔗 Consulta el artículo completo para más detalles y configuraciones avanzadas: [Getting your computer ready for machine learning](https://www.mrdbourke.com/get-your-computer-ready-for-machine-learning-using-anaconda-miniconda-and-conda/)
 
-## **5. Miniconda para macOS**
+### **5. Miniconda para macOS**
 
 Miniconda es una versión compacta y ligera de Anaconda.
 
@@ -122,7 +122,7 @@ Miniconda es una versión compacta y ligera de Anaconda.
 - Es ideal para mantener un sistema limpio y personalizar las herramientas que necesitas para tus proyectos.
 - 🔗 [Installing Miniconda Docs](https://docs.anaconda.com/miniconda/install/)
 
-### **Instalación**
+#### **Instalación**
 
 1. **Descarga el instalador para macOS:**  
    Según tu arquitectura, utiliza el siguiente comando en la terminal para descargar Miniconda:
@@ -168,7 +168,7 @@ Miniconda es una versión compacta y ligera de Anaconda.
    ```
    Si todo está en orden, deberías ver algo como `conda 24.9.2`.
 
-### **Ventajas de Miniconda**
+#### **Ventajas de Miniconda**
 
 - **Ligereza:** A diferencia de Anaconda, Miniconda no incluye decenas de paquetes preinstalados. Esto reduce el consumo de espacio en disco y permite una mayor personalización.
 - **Flexibilidad:** Puedes instalar solo las bibliotecas necesarias para tu proyecto, optimizando recursos y minimizando conflictos entre dependencias.
@@ -178,7 +178,7 @@ Miniconda es una versión compacta y ligera de Anaconda.
 
 ---
 
-## **6. Cómo Saber si Tienes Conda o Miniconda Instalados**
+### **6. Cómo Saber si Tienes Conda o Miniconda Instalados**
 
 Para verificar si ya tienes Conda o Miniconda instalados en tu equipo, sigue estos pasos:
 
@@ -213,7 +213,7 @@ Para verificar si ya tienes Conda o Miniconda instalados en tu equipo, sigue est
 
 ---
 
-## **7. Pasos para Configurar un Proyecto de ML en Mac**
+### **7. Pasos para Configurar un Proyecto de ML en Mac**
 
 Estos son los pasos clave para iniciar un proyecto de Machine Learning utilizando **Conda**, asegurando un entorno bien configurado y aislado.
 
@@ -288,13 +288,13 @@ Estos son los pasos clave para iniciar un proyecto de Machine Learning utilizand
   conda remove --prefix ./env --all
   ```
 
-![Project Setup Environment](/assets/section-4/project-setup.png)
+<img src="/assets/section-4/project-setup.png" alt="Project Setup Environment" width="600">
 
 > Estos pasos te permiten configurar un entorno limpio y aislado para cada proyecto. Esto asegura **compatibilidad de dependencias y evita conflictos** con otros proyectos en tu sistema.
 
 ---
 
-## **8. Usar el Entorno en Jupyter Notebook**
+### **8. Usar el Entorno en Jupyter Notebook**
 
 Una vez configurado tu entorno de Conda, puedes integrarlo con **Jupyter Notebook** para realizar análisis interactivos y trabajar en tus proyectos de Machine Learning de manera eficiente.
 
@@ -362,7 +362,7 @@ Cuando termines de trabajar, puedes cerrar Jupyter Notebook desde la interfaz we
 
 ---
 
-## **9. Compartir tu Entorno Conda**
+### **9. Compartir tu Entorno Conda**
 
 Puede llegar un momento en el que necesites compartir el contenido de tu entorno Conda. Esto puede ser útil para compartir el flujo de trabajo de un proyecto con un colega o con alguien que necesite configurar su sistema para tener acceso a las mismas herramientas que tú.
 
@@ -420,11 +420,11 @@ Esto configurará un nuevo entorno en tu sistema con los paquetes especificados 
 
 ---
 
-## **10. Jupyter Notebook**
+### **10. Jupyter Notebook**
 
 **Jupyter Notebook** es una herramienta interactiva ampliamente utilizada en Ciencia de Datos y Machine Learning. Permite combinar código ejecutable, visualizaciones y texto en un solo documento, ideal para análisis exploratorio, desarrollo de modelos y documentación.
 
-### **Uso Básico**
+#### **Uso Básico**
 
 1. **Iniciar Jupyter Notebook:**
 
@@ -457,18 +457,18 @@ Esto configurará un nuevo entorno en tu sistema con los paquetes especificados 
 
 ---
 
-## **11. Atajos Esenciales para Jupyter Notebook**
+### **11. Atajos Esenciales para Jupyter Notebook**
 
 Conocer los atajos de teclado en **Jupyter Notebook** puede aumentar significativamente tu productividad.
 
-### **Modo de Edición (dentro de una celda):**
+#### **Modo de Edición (dentro de una celda):**
 
 - `Ctrl + Enter`: Ejecuta la celda actual sin mover el cursor.
 - `Shift + Enter`: Ejecuta la celda y mueve el cursor a la siguiente.
 - `Alt + Enter`: Ejecuta la celda y crea una nueva celda debajo.
 - `Esc`: Cambia al modo de comando.
 
-### **Modo de Comando (fuera de una celda):**
+#### **Modo de Comando (fuera de una celda):**
 
 - `A`: Inserta una celda arriba de la actual.
 - `B`: Inserta una celda debajo de la actual.
@@ -477,7 +477,7 @@ Conocer los atajos de teclado en **Jupyter Notebook** puede aumentar significati
 - `Y`: Convierte la celda en código.
 - `Z`: Deshacer eliminación de una celda.
 
-### **Atajos Globales:**
+#### **Atajos Globales:**
 
 - `Ctrl + S`: Guarda el notebook.
 - `Shift + M`: Combina celdas seleccionadas.
