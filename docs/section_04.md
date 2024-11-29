@@ -170,6 +170,10 @@
   ```python
   df.rename(columns={'columna_antigua': 'columna_nueva'}, inplace=True)
   ```
+- **Resetear índices:**
+  ```python
+  df.reset_index(inplace=True)
+  ```
 - **Seleccionar una muestra aleatoria del DataFrame:**
 
   ```python
@@ -221,6 +225,15 @@ La columna se elimina directamente del DataFrame `df`.
 ---
 
 ## **8. Enlaces y Recursos de Interés**
+
+**Jupyter Notebooks**:
+
+- [Introducción a Pandas](/notebooks/pandas/1-introduccion-pandas.ipynb)
+- [Manipulación de datos en Pandas](/notebooks/pandas/2-manipulacion-pandas.ipynb)
+- [Cuaderno con ejercicios para practicar con Pandas](/notebooks/pandas/3-pandas-exercises.ipynb)
+- [Solución de los ejercicios](/notebooks/pandas/4-pandas-exercises-solutions.ipynb)
+
+**Enlaces y Recursos de interés**:
 
 - [Pandas Docs](https://pandas.pydata.org/pandas-docs/stable/)
 - [10 Minutes to Pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html#min)
