@@ -115,3 +115,7 @@ El curso está dividido en 20 secciones. Este es un resumen del progreso realiza
 - **❌ Pendiente**
 
 ---
+
+## Recursos y Enlaces de interés
+
+- 🔗 [Jupyter Notebook vs Google Colab](/docs/extra/jupyter-vs-colab.md)

@@ -1,19 +1,17 @@
----
-
 ## **Comparación entre Jupyter Notebook y Google Colab**
 
 Esta sección te ayudará a decidir cuándo utilizar **Jupyter Notebook** o **Google Colab** según las necesidades de tu proyecto.
 
 ### **Diferencias Principales**
 
-| Característica          | Jupyter Notebook                                      | Google Colab                                       |
-|-------------------------|-------------------------------------------------------|---------------------------------------------------|
-| **Acceso**             | Local (requiere instalación)                          | Basado en la nube (accesible desde cualquier lugar) |
-| **Colaboración**        | Compartir por correo/repositorio, sin edición conjunta | Colaboración en tiempo real, similar a Google Docs |
-| **Recursos computacionales** | Depende del hardware local                        | Acceso gratuito a GPUs y TPUs en la nube           |
-| **Persistencia de datos** | Archivos almacenados localmente                      | Datos temporales, se deben guardar manualmente en Google Drive |
-| **Personalización**     | Altamente personalizable con extensiones              | Configuración limitada predefinida                 |
-| **Extensiones y plugins** | Soporte para plugins y extensiones                  | No admite extensiones personalizadas               |
+| Característica               | Jupyter Notebook                                       | Google Colab                                                   |
+| ---------------------------- | ------------------------------------------------------ | -------------------------------------------------------------- |
+| **Acceso**                   | Local (requiere instalación)                           | Basado en la nube (accesible desde cualquier lugar)            |
+| **Colaboración**             | Compartir por correo/repositorio, sin edición conjunta | Colaboración en tiempo real, similar a Google Docs             |
+| **Recursos computacionales** | Depende del hardware local                             | Acceso gratuito a GPUs y TPUs en la nube                       |
+| **Persistencia de datos**    | Archivos almacenados localmente                        | Datos temporales, se deben guardar manualmente en Google Drive |
+| **Personalización**          | Altamente personalizable con extensiones               | Configuración limitada predefinida                             |
+| **Extensiones y plugins**    | Soporte para plugins y extensiones                     | No admite extensiones personalizadas                           |
 
 ---
 
