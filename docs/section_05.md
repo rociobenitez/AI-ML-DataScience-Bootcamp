@@ -64,7 +64,7 @@ print(array.itemsize)  # Tamaño de cada elemento en bytes
 
 **Tipos de datos soportados:** `int`, `float`, `bool`, `complex`, etc.
 
-<img src="/assets/section-5/anatomy-numpy-array.webp" alt="Arrays Numpy" width="600">
+<img src="../assets/section-5/anatomy-numpy-array.webp" alt="Arrays Numpy" width="600">
 
 ---
 
@@ -155,7 +155,7 @@ Las matrices de más de dos dimensiones son útiles en:
 - **Redes neuronales:** Tensores multidimensionales que representan datos de entrenamiento.
 - **Modelos científicos complejos:** Representación de datos en múltiples capas o dimensiones.
 
-<img src="/assets/section-5/arrays-numpy.png" alt="Arrays Numpy" width="600">
+<img src="../assets/section-5/arrays-numpy.png" alt="Arrays Numpy" width="600" style="padding:24px; margin: 24px 0; background: white;">
 
 ---
 
@@ -241,7 +241,7 @@ Las matrices de más de dos dimensiones son útiles en:
 np.std(array)
 ```
 
-<img src="/assets/section-5/desviacion-estandar.png" alt="Desviación estándar" width="500">
+<img src="../assets/section-5/desviacion-estandar.png" alt="Desviación estándar" width="400" style="padding:24px; margin: 24px 0; background: white;">
 
 **Varianza:** La varianza mide qué tan dispersos están los datos respecto a su media. Se calcula como el promedio de las diferencias elevadas al cuadrado entre cada valor y la media del conjunto de datos. Una **varianza alta** indica que los **datos están más dispersos**; una varianza baja indica que los datos están más cerca de la media. Sus valores son **más difíciles de interpretar** directamente debido a las **unidades al cuadrado**.
 
@@ -252,8 +252,8 @@ np.var(array)
 > [!NOTE]
 > La varianza y la desviación estándar son **medidas de dispersión**, pero tienen diferencias. La desviación estándar es la raíz cuadrada de la varianza y ofrece una interpretación más directa de la dispersión.
 
-🔗 [Desviación Estándar y Varianza](https://www.mathsisfun.com/data/standard-deviation.html)
-🔗 [Varianza - Wikipedia](https://es.wikipedia.org/wiki/Varianza)
+- 🔗 [Desviación Estándar y Varianza](https://www.mathsisfun.com/data/standard-deviation.html)
+- 🔗 [Varianza - Wikipedia](https://es.wikipedia.org/wiki/Varianza)
 
 ---
 
@@ -269,11 +269,12 @@ print(reshaped)
 #  [4 5 6]]
 ```
 
+> [!TIP]
 > **Nota:** Si no estás seguro del tamaño en una dimensión, usa `-1` y NumPy calculará automáticamente:
-
-```python
-reshaped = array.reshape(-1, 3)  # NumPy ajusta las filas automáticamente
-```
+>
+> ```python
+> reshaped = array.reshape(-1, 3)  # NumPy ajusta las filas automáticamente
+> ```
 
 **Transpose:** Este método T intercambia filas por columnas en un array 2D o cambia las dimensiones en arrays de mayor dimensión. Es útil para reorientar matrices o preparar datos para cálculos matemáticos.
 
@@ -285,7 +286,7 @@ print(transposed)
 #  [3 6]]
 ```
 
-🔗 [Broadcasting NumPy](https://numpy.org/doc/stable/user/basics.broadcasting.html)
+- 🔗 [Broadcasting NumPy](https://numpy.org/doc/stable/user/basics.broadcasting.html)
 
 ---
 
@@ -320,21 +321,72 @@ array2 = np.array([4, 5, 6])
 result = array1 * array2  # [1*4, 2*5, 3*6] = [4, 10, 18]
 ```
 
-<img src="/assets/section-5/dotproduct-elementwise.jpg" alt="Dot product vs. Element-wise" width="500">
+<img src="../assets/section-5/dotproduct-elementwise.jpg" alt="Dot product vs. Element-wise" width="500" style="margin: 24px 0;">
 
-🔗 [Cómo multiplicar matrices](https://www.mathsisfun.com/algebra/matrix-multiplying.html)
-🔗 [Matriz Multiplication](http://matrixmultiplication.xyz/)
+- 🔗 [Cómo multiplicar matrices](https://www.mathsisfun.com/algebra/matrix-multiplying.html)
+- 🔗 [Matriz Multiplication](http://matrixmultiplication.xyz/)
 
 ---
 
 ## **10. Operadores de Comparación**
 
-**Comparar arrays elemento a elemento:**
+Los **operadores de comparación** en NumPy permiten comparar arrays elemento a elemento, devolviendo un array booleano (`True` o `False`) que indica si la condición se cumple para cada elemento. Son útiles para filtrar, analizar o manipular datos basados en condiciones.
 
-```python
-array > 5
-array1 == array2
-```
+### **Comparaciones básicas**
+- Comparar si los elementos de un array cumplen una condición:
+  ```python
+  array = np.array([3, 6, 9])
+  result = array > 5
+  print(result)  # [False  True  True]
+  ```
+
+- Comparar elementos entre dos arrays:
+  ```python
+  array1 = np.array([1, 2, 3])
+  array2 = np.array([3, 2, 1])
+  print(array1 == array2)  # [False  True  False]
+  print(array1 > array2)   # [False False  True]
+  ```
+
+### **Aplicaciones prácticas**
+1. **Filtrar datos en un array:**
+   - Puedes usar operadores de comparación junto con indexación para extraer elementos que cumplan ciertas condiciones:
+     ```python
+     array = np.array([3, 6, 9])
+     filtered = array[array > 5]
+     print(filtered)  # [6 9]
+     ```
+
+2. **Comparaciones múltiples:**
+   - Combina múltiples condiciones usando operadores lógicos (`&`, `|`, `~`):
+     ```python
+     array = np.array([3, 6, 9])
+     result = (array > 5) & (array < 10)
+     print(result)  # [False  True  True]
+     ```
+
+3. **Comprobar si todos o algún elemento cumple una condición:**
+   - `np.all()`: Verifica si **todos** los elementos cumplen una condición.
+   - `np.any()`: Verifica si **algún** elemento cumple una condición.
+     ```python
+     array = np.array([3, 6, 9])
+     print(np.all(array > 5))  # False
+     print(np.any(array > 5))  # True
+     ```
+
+4. **Comparaciones con arrays multidimensionales:**
+   - Funciona igual, pero aplica la comparación a cada elemento individual:
+     ```python
+     matrix = np.array([[1, 2, 3], [4, 5, 6]])
+     print(matrix > 3)
+     # [[False False False]
+     #  [ True  True  True]]
+     ```
+
+> [!NOTE]
+> - El resultado de las comparaciones es un array booleano del mismo tamaño que el array original.
+> - Los operadores (`>`, `<`, `>=`, `<=`, `==`, `!=`) funcionan de manera nativa con arrays de NumPy.
+> - 🔗 [Logic functions NumPy](https://numpy.org/doc/2.1/reference/routines.logic.html)
 
 ---
 
