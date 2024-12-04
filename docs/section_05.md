@@ -64,7 +64,7 @@ print(array.itemsize)  # Tamaño de cada elemento en bytes
 
 **Tipos de datos soportados:** `int`, `float`, `bool`, `complex`, etc.
 
-<img src="../assets/section-5/anatomy-numpy-array.webp" alt="Arrays Numpy" width="600">
+<img src="assets/section-5/anatomy-numpy-array.webp" alt="Arrays Numpy" width="600">
 
 ---
 
@@ -155,7 +155,7 @@ Las matrices de más de dos dimensiones son útiles en:
 - **Redes neuronales:** Tensores multidimensionales que representan datos de entrenamiento.
 - **Modelos científicos complejos:** Representación de datos en múltiples capas o dimensiones.
 
-<img src="../assets/section-5/arrays-numpy.png" alt="Arrays Numpy" width="600" style="padding:24px; margin: 24px 0; background: white;">
+<img src="assets/section-5/arrays-numpy.png" alt="Arrays Numpy" width="600" style="padding:24px; margin: 24px 0; background: white;">
 
 ---
 
@@ -241,7 +241,7 @@ Las matrices de más de dos dimensiones son útiles en:
 np.std(array)
 ```
 
-<img src="../assets/section-5/desviacion-estandar.png" alt="Desviación estándar" width="400" style="padding:24px; margin: 24px 0; background: white;">
+<img src="assets/section-5/desviacion-estandar.png" alt="Desviación estándar" width="400" style="padding:24px; margin: 24px 0; background: white;">
 
 **Varianza:** La varianza mide qué tan dispersos están los datos respecto a su media. Se calcula como el promedio de las diferencias elevadas al cuadrado entre cada valor y la media del conjunto de datos. Una **varianza alta** indica que los **datos están más dispersos**; una varianza baja indica que los datos están más cerca de la media. Sus valores son **más difíciles de interpretar** directamente debido a las **unidades al cuadrado**.
 
@@ -320,7 +320,7 @@ array2 = np.array([4, 5, 6])
 result = array1 * array2  # [1*4, 2*5, 3*6] = [4, 10, 18]
 ```
 
-<img src="../assets/section-5/dotproduct-elementwise.jpg" alt="Dot product vs. Element-wise" width="500" style="margin: 24px 0;">
+<img src="assets/section-5/dotproduct-elementwise.jpg" alt="Dot product vs. Element-wise" width="500" style="margin: 24px 0;">
 
 - 🔗 [Cómo multiplicar matrices](https://www.mathsisfun.com/algebra/matrix-multiplying.html)
 - 🔗 [Matriz Multiplication](http://matrixmultiplication.xyz/)
