@@ -269,8 +269,7 @@ print(reshaped)
 #  [4 5 6]]
 ```
 
-> [!TIP]
-> **Nota:** Si no estás seguro del tamaño en una dimensión, usa `-1` y NumPy calculará automáticamente:
+> [!TIP] > **Nota:** Si no estás seguro del tamaño en una dimensión, usa `-1` y NumPy calculará automáticamente:
 >
 > ```python
 > reshaped = array.reshape(-1, 3)  # NumPy ajusta las filas automáticamente
@@ -333,7 +332,9 @@ result = array1 * array2  # [1*4, 2*5, 3*6] = [4, 10, 18]
 Los **operadores de comparación** en NumPy permiten comparar arrays elemento a elemento, devolviendo un array booleano (`True` o `False`) que indica si la condición se cumple para cada elemento. Son útiles para filtrar, analizar o manipular datos basados en condiciones.
 
 ### **Comparaciones básicas**
+
 - Comparar si los elementos de un array cumplen una condición:
+
   ```python
   array = np.array([3, 6, 9])
   result = array > 5
@@ -349,7 +350,9 @@ Los **operadores de comparación** en NumPy permiten comparar arrays elemento a 
   ```
 
 ### **Aplicaciones prácticas**
+
 1. **Filtrar datos en un array:**
+
    - Puedes usar operadores de comparación junto con indexación para extraer elementos que cumplan ciertas condiciones:
      ```python
      array = np.array([3, 6, 9])
@@ -358,6 +361,7 @@ Los **operadores de comparación** en NumPy permiten comparar arrays elemento a 
      ```
 
 2. **Comparaciones múltiples:**
+
    - Combina múltiples condiciones usando operadores lógicos (`&`, `|`, `~`):
      ```python
      array = np.array([3, 6, 9])
@@ -366,6 +370,7 @@ Los **operadores de comparación** en NumPy permiten comparar arrays elemento a 
      ```
 
 3. **Comprobar si todos o algún elemento cumple una condición:**
+
    - `np.all()`: Verifica si **todos** los elementos cumplen una condición.
    - `np.any()`: Verifica si **algún** elemento cumple una condición.
      ```python
@@ -384,6 +389,7 @@ Los **operadores de comparación** en NumPy permiten comparar arrays elemento a 
      ```
 
 > [!NOTE]
+>
 > - El resultado de las comparaciones es un array booleano del mismo tamaño que el array original.
 > - Los operadores (`>`, `<`, `>=`, `<=`, `==`, `!=`) funcionan de manera nativa con arrays de NumPy.
 > - 🔗 [Logic functions NumPy](https://numpy.org/doc/2.1/reference/routines.logic.html)
@@ -392,32 +398,129 @@ Los **operadores de comparación** en NumPy permiten comparar arrays elemento a 
 
 ## **11. Ordenación de Arrays**
 
-**Ordenar un array:**
+La **ordenación** en NumPy permite reorganizar los valores de un array en orden **ascendente o descendente**, según tus necesidades. También puedes obtener los índices que representarían ese orden.
 
-```python
-np.sort(array)
-```
+### **1. Ordenar valores en un array**
 
-**Ordenar índices:**
+- **`np.sort()`**: Devuelve un nuevo array con los elementos ordenados en **orden ascendente**.
 
-```python
-np.argsort(array)
-```
+  ```python
+  array = np.array([3, 1, 2])
+  sorted_array = np.sort(array)
+  print(sorted_array)  # [1 2 3]
+  ```
+
+- Para arrays multidimensionales:
+  - Ordena los elementos a lo largo del último eje por defecto:
+    ```python
+    matrix = np.array([[3, 2, 1], [6, 5, 4]])
+    print(np.sort(matrix))
+    # [[1 2 3]
+    #  [4 5 6]]
+    ```
+
+### **2. Ordenar por índices**
+
+- **`np.argsort()`**: Devuelve los **índices** que ordenarían el array.
+  ```python
+  array = np.array([3, 1, 2])
+  sorted_indices = np.argsort(array)
+  print(sorted_indices)  # [1 2 0] -> índices de [1, 2, 3]
+  ```
+
+### **3. Uso práctico con los índices**
+
+- Puedes usar los índices para reordenar un array manualmente:
+  ```python
+  sorted_array = array[np.argsort(array)]
+  print(sorted_array)  # [1 2 3]
+  ```
 
 ---
 
 ## **12. Convertir Imágenes en Arrays de NumPy**
 
-NumPy puede procesar imágenes como arrays para análisis y manipulación:
+NumPy puede procesar imágenes convirtiéndolas en arrays, lo que permite realizar análisis, manipulación y procesamiento de imágenes directamente como datos numéricos.
 
-**Usar `matplotlib` para cargar imágenes:**
+### **Cargar una imagen como array**
+
+Puedes utilizar `matplotlib.image` para cargar imágenes en formato NumPy:
 
 ```python
 from matplotlib.image import imread
+
+# Cargar la imagen
 image = imread('imagen.jpg')
+
+# Información de la imagen
 print(type(image))  # Clase numpy.ndarray
-print(image.shape)  # Dimensiones de la imagen
+print(image.shape)  # Dimensiones de la imagen (alto, ancho, canales)
 ```
+
+### **Ejemplo práctico:**
+
+Supongamos que tienes una imagen RGB (`imagen.jpg`) de tamaño 256x256. Cuando se carga con `imread`, se convierte en un array 3D donde:
+
+- El primer eje representa las filas (alto de la imagen).
+- El segundo eje representa las columnas (ancho de la imagen).
+- El tercer eje representa los canales de color (por ejemplo, RGB con 3 canales).
+
+```python
+image = imread('imagen.jpg')
+print(image.shape)  # (256, 256, 3)
+```
+
+### **Operaciones comunes con imágenes como arrays**
+
+1. **Acceder a píxeles específicos:**
+
+   - Los píxeles se representan como valores numéricos en los canales de color.
+
+   ```python
+   print(image[0, 0])  # Valor del píxel en la esquina superior izquierda
+   ```
+
+2. **Escala de grises:**
+
+   - Si la imagen es en escala de grises, el array será 2D (alto y ancho):
+
+   ```python
+   gray_image = imread('imagen_gris.jpg')
+   print(gray_image.shape)  # (256, 256)
+   ```
+
+3. **Normalización de valores:**
+
+   - Las imágenes suelen tener valores entre 0 y 255. Para normalizarlos entre 0 y 1:
+
+   ```python
+   normalized_image = image / 255.0
+   ```
+
+4. **Mostrar la imagen usando `matplotlib`:**
+
+   - Visualiza la imagen después de cargarla como array:
+
+   ```python
+   import matplotlib.pyplot as plt
+
+   plt.imshow(image)
+   plt.axis('off')  # Ocultar ejes
+   plt.show()
+   ```
+
+5. **Modificar la imagen:**
+   - Por ejemplo, establecer todos los valores de un canal (como el rojo) a 0:
+   ```python
+   image[:, :, 0] = 0  # Elimina el canal rojo
+   plt.imshow(image)
+   plt.show()
+   ```
+
+> [!NOTE]
+>
+> - La manipulación de imágenes en NumPy es útil para tareas de visión por computadora y aprendizaje automático.
+> - Usa bibliotecas adicionales como **OpenCV** o **Pillow** para un procesamiento de imágenes más avanzado.
 
 ---
 
@@ -427,5 +530,8 @@ print(image.shape)  # Dimensiones de la imagen
 - [Guía rápida de NumPy](https://numpy.org/doc/stable/user/quickstart.html)
 - [NumPy en profundidad](https://jakevdp.github.io/PythonDataScienceHandbook/02.00-introduction-to-numpy.html)
 - [Jupyter Notebooks de la sección](/notebooks/numpy/)
+- [A visual Introduction to NumPy by Jay Alammar](https://jalammar.github.io/visual-numpy/)
+- [The Basics of NumPy Arrays](https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html)
+- [NumPy Quickstart tutorial](https://numpy.org/doc/1.17/user/quickstart.html)
 
 ---
