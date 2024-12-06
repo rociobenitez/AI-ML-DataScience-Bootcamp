@@ -106,7 +106,7 @@ El curso está dividido en 20 secciones. Este es un resumen del progreso realiza
 | 3       | [Data Science Environment Setup](/docs/section_03.md) | Configuración de entornos, herramientas clave y uso de Jupyter Notebook                      | ✅     |
 | 4       | [Pandas](/docs/section_04.md)                         | Introducción y práctica con Pandas: manipulación, análisis y preparación de datos.           | ✅     |
 | 5       | [Numpy](/docs/section_05.md)                          | Arrays, Matrices, Operaciones, Estadísticas, Transformaciones                                | ✅     |
-| 6       | Matplotlib                                            |                                                                                              | ❌     |
+| 6       | [Matplotlib](/docs/section_06.md)                     | Data visualization, customization, saving plots                                              | ✅     |
 | 7       | Scikit-learn                                          |                                                                                              | ❌     |
 | ...     | ...                                                   | ...                                                                                          | ...    |
 
