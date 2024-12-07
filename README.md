@@ -99,16 +99,17 @@ Cada carpeta está diseñada para contener recursos específicos y mantenerse mo
 
 El curso está dividido en 20 secciones. Este es un resumen del progreso realizado hasta ahora:
 
-| Sección | Título                                                | Descripción breve                                                                            | Estado |
-| ------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------ |
-| 1       | [Machine Learning 101](/docs/section_01.md)           | Qué es ML y tipos de ML                                                                      | ✅     |
-| 2       | [ML and Data Science Framework](/docs/section_02.md)  | Framework de 6 pasos, features, modelado, overfitting vs. underfitting, y herramientas clave | ✅     |
-| 3       | [Data Science Environment Setup](/docs/section_03.md) | Configuración de entornos, herramientas clave y uso de Jupyter Notebook                      | ✅     |
-| 4       | [Pandas](/docs/section_04.md)                         | Introducción y práctica con Pandas: manipulación, análisis y preparación de datos.           | ✅     |
-| 5       | [Numpy](/docs/section_05.md)                          | Arrays, Matrices, Operaciones, Estadísticas, Transformaciones                                | ✅     |
-| 6       | [Matplotlib](/docs/section_06.md)                     | Data visualization, customization, saving plots                                              | ✅     |
-| 7       | Scikit-learn                                          |                                                                                              | ❌     |
-| ...     | ...                                                   | ...                                                                                          | ...    |
+| Sección | Título                                                | Descripción breve                                                                                                                                   | Estado |
+| ------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 1       | [Machine Learning 101](/docs/section_01.md)           | Qué es ML y tipos de ML                                                                                                                             | ✅     |
+| 2       | [ML and Data Science Framework](/docs/section_02.md)  | Framework de 6 pasos, features, modelado, overfitting vs. underfitting, y herramientas clave                                                        | ✅     |
+| 3       | [Data Science Environment Setup](/docs/section_03.md) | Configuración de entornos, herramientas clave y uso de Jupyter Notebook                                                                             | ✅     |
+| 4       | [Pandas](/docs/section_04.md)                         | Introducción y práctica con Pandas: manipulación, análisis y preparación de datos.                                                                  | ✅     |
+| 5       | [Numpy](/docs/section_05.md)                          | Arrays, Matrices, Operaciones, Estadísticas, Transformaciones                                                                                       | ✅     |
+| 6       | [Matplotlib](/docs/section_06.md)                     | Data visualization, customization, saving plots                                                                                                     | ✅     |
+| 7       | [Scikit-learn](/docs/section_07.md)                   | Workflow en Scikit-Learn: obtener y preparar los datos, elegir estimador e hiperparámetros, ajustar, hacer predicciones, evaluar, mejorar el modelo | 🚧     |
+| 8       | Supervised Learning                                   |                                                                                                                                                     | ❌     |
+| ...     | ...                                                   | ...                                                                                                                                                 | ...    |
 
 - **✅ Completado**
 - **🚧 En progreso**
