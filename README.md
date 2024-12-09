@@ -108,7 +108,11 @@ El curso está dividido en 20 secciones. Este es un resumen del progreso realiza
 | 5       | [Numpy](/docs/section_05.md)                          | Arrays, Matrices, Operaciones, Estadísticas, Transformaciones                                                                                       | ✅     |
 | 6       | [Matplotlib](/docs/section_06.md)                     | Data visualization, customization, saving plots                                                                                                     | ✅     |
 | 7       | [Scikit-learn](/docs/section_07.md)                   | Workflow en Scikit-Learn: obtener y preparar los datos, elegir estimador e hiperparámetros, ajustar, hacer predicciones, evaluar, mejorar el modelo | 🚧     |
-| 8       | Supervised Learning                                   |                                                                                                                                                     | ❌     |
+| 8       | Supervised Learning - Clasificación + Regresión       |                                                                                                                                                     | ❌     |
+| 9       | Supervised Learning - Clasificación                   |                                                                                                                                                     | ❌     |
+| 10      | Supervised Learning - Time Series Data                |                                                                                                                                                     | ❌     |
+| 11      | Data Engineering                                      |                                                                                                                                                     | ❌     |
+| 12      | Redes neuronales                                      | Deep Learning, Transfer Learning and TensorFlow 2                                                                                                   | ❌     |
 | ...     | ...                                                   | ...                                                                                                                                                 | ...    |
 
 - **✅ Completado**

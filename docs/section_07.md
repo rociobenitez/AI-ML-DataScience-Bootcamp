@@ -12,10 +12,10 @@
 4. [Debugging Warnings en Jupyter](#4-debugging-warnings-en-jupyter)
 5. [División de Datos (Splitting Data)](#5-división-de-datos-splitting-data)
 6. [Limpieza y Transformación de Datos](#6-limpieza-y-transformación-de-datos-clean-transform-reduce)
-7. [Convertir Datos en Números](#6-convertir-datos-en-números)
-8. [Manejo de Valores Faltantes](#7-manejo-de-valores-faltantes)
-9. [Feature Scaling (Escalado de Características)](#8-feature-scaling-escalado-de-características)
-10. [Elegir el Modelo Correcto (Regresión)](#9-elegir-el-modelo-correcto-regresión)
+7. [Convertir Datos en Números](#7-convertir-datos-en-números)
+8. [Manejo de Valores Faltantes](#8-manejo-de-valores-faltantes)
+9. [Escalado de Características (Feature Scaling)](#9-escalado-de-características-feature-scaling)
+10. [Elegir el Modelo Correcto (Regresión)](#10-elegir-el-modelo-correcto-regresión)
 11. [Árboles de Decisión (Decision Trees)](#10-árboles-de-decisión-decision-trees)
 12. [Funcionamiento de los Algoritmos de ML](#11-funcionamiento-de-los-algoritmos-de-ml)
 13. [Elegir el Modelo Correcto (Clasificación)](#12-elegir-el-modelo-correcto-clasificación)
@@ -314,25 +314,135 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 ---
 
+Claro, aquí tienes una explicación más detallada y útil sobre cómo trabajar con datos categóricos y convertirlos a números:
+
+---
+
 ## **7. Convertir Datos en Números**
 
-Para trabajar con datos categóricos, utiliza `LabelEncoder` o `OneHotEncoder`:
+Los algoritmos de machine learning suelen trabajar mejor con datos numéricos. Sin embargo, en muchos casos, los datos contienen **variables categóricas** (como colores, países, tipos de productos, etc.). Para convertir estos datos categóricos en números, Scikit-Learn proporciona herramientas como `LabelEncoder` y `OneHotEncoder`.
+
+### **1. `LabelEncoder`**
+
+El `LabelEncoder` asigna un número único a cada categoría de una columna. Este método es útil cuando las categorías tienen un **orden lógico**, como "bajo", "medio", "alto".
+
+Ejemplo:
+
+```python
+from sklearn.preprocessing import LabelEncoder
+
+data = pd.DataFrame({"color": ["red", "blue", "green", "blue", "red"]})
+
+label_encoder = LabelEncoder()
+data["color_encoded"] = label_encoder.fit_transform(data["color"])
+print(data)
+```
+
+**Salida:**
+
+```plaintext
+   color  color_encoded
+0    red              2
+1   blue              0
+2  green              1
+3   blue              0
+4    red              2
+```
+
+- **Ventajas:** Simple y directo.
+- **Desventajas:** Puede inducir relaciones ordinales incorrectas entre las categorías si no hay un orden lógico.
+
+### **2. `OneHotEncoder`**
+
+El `OneHotEncoder` crea columnas binarias (0 o 1) para cada categoría, evitando que el modelo asuma relaciones ordinales entre categorías.
+
+<img src="../assets/section-7/one_hot_encoding.png" alt="One Hot Encoding" width="800" style="padding:24px; margin: 24px auto; background: white;">
+
+Ejemplo:
 
 ```python
 from sklearn.preprocessing import OneHotEncoder
 
-encoder = OneHotEncoder()
-encoded = encoder.fit_transform(data[['column_name']])
+data = pd.DataFrame({"color": ["red", "blue", "green", "blue", "red"]})
+
+one_hot_encoder = OneHotEncoder()
+encoded = one_hot_encoder.fit_transform(data[["color"]])
+print(encoded.toarray())  # Convertir a matriz NumPy para ver los resultados
 ```
+
+**Salida:**
+
+```plaintext
+[[0. 0. 1.]
+ [1. 0. 0.]
+ [0. 1. 0.]
+ [1. 0. 0.]
+ [0. 0. 1.]]
+```
+
+- Las columnas representan categorías en orden alfabético: `["blue", "green", "red"]`.
+- **Ventajas:** Evita relaciones ordinales falsas.
+- **Desventajas:** Incrementa el tamaño del dataset si hay muchas categorías.
+
+> [!NOTE]
+>
+> - En una versión más nueva de Scikit-Learn (0.23+), la clase `OneHotEncoder` puede manejar valores `None` y `NaN`.
+> - 🔗 [Documentación OneHotEncoder Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)
+
+### **3. Usar `ColumnTransformer` con `OneHotEncoder`**
+
+Si tienes varias columnas categóricas y numéricas en tu dataset, puedes usar `ColumnTransformer` para aplicar transformaciones específicas a cada tipo de columna.
+
+Ejemplo práctico:
+
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+
+data = pd.DataFrame({
+    "color": ["red", "blue", "green", "blue", "red"],
+    "size": ["S", "M", "L", "M", "S"],
+    "price": [10, 20, 15, 25, 30]
+})
+
+categorical_features = ["color", "size"]
+one_hot_encoder = OneHotEncoder()
+
+transformer = ColumnTransformer(
+   transformers=[("one_hot", one_hot_encoder, categorical_features)],
+   remainder="passthrough"  # Deja las columnas no especificadas sin cambios
+)
+
+transformed_data = transformer.fit_transform(data)
+print(transformed_data)
+```
+
+**Salida:**
+
+```plaintext
+[[0. 0. 1. 1. 0. 0. 10.]
+ [1. 0. 0. 0. 1. 0. 20.]
+ [0. 1. 0. 0. 0. 1. 15.]
+ [1. 0. 0. 0. 1. 0. 25.]
+ [0. 0. 1. 1. 0. 0. 30.]]
+```
+
+### **Tips para elegir el método adecuado:**
+
+1. Usa `LabelEncoder` si tus categorías tienen un **orden lógico** o si son simples y están contenidas en una única columna.
+2. Usa `OneHotEncoder` si quieres evitar relaciones ordinales falsas entre categorías.
+3. Si trabajas con datasets más complejos (mixtos con columnas categóricas y numéricas), utiliza `ColumnTransformer` para combinar transformaciones.
+
+Esto hace que tus datos estén listos para ser utilizados por algoritmos de machine learning que requieren representaciones numéricas.
 
 ---
 
-## **7. Manejo de Valores Faltantes**
+## **8. Manejo de Valores Faltantes**
 
 ### Con pandas:
 
 ```python
-df["column"].fillna(value, inplace=True)
+df["column"] = df["column"].fillna(value)
 ```
 
 ### Con Scikit-Learn:
@@ -345,15 +455,44 @@ imputed = imputer.fit_transform(df)
 
 ---
 
-## **8. Feature Scaling (Escalado de Características)**
+## **9. Escalado de Características (Feature Scaling)**
 
-Usa `StandardScaler` o `MinMaxScaler` para normalizar los datos.
+Una vez que tus datos estén en formato numérico, probablemente querrás aplicarles una transformación adicional: **escalado de características (Feature Scaling)**. Esto significa asegurarte de que **todos los datos numéricos estén en la misma escala**.
 
-```python
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-scaled_data = scaler.fit_transform(data)
-```
+**¿Por qué es importante?**
+
+Imagina que estás tratando de predecir el precio de venta de coches y el kilometraje varía entre 6,000 y 345,000, mientras que el costo promedio de reparaciones anteriores varía entre 100 y 1,700. Un algoritmo de aprendizaje automático podría tener dificultades para encontrar patrones en estas variables con rangos tan diferentes.
+
+Para solucionar esto, existen dos tipos principales de escalado de características:
+
+1. **Normalización (`MinMaxScaler`):**
+
+   - Este método reescala todos los valores numéricos para que estén entre 0 y 1.
+   - El valor más bajo estará cerca de 0, y el más alto estará cerca de 1.
+   - [Scikit-Learn proporciona la clase `MinMaxScaler`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) para realizar esta operación.
+
+2. **Estandarización (`StandardScaler`):**
+
+   - Este método resta la media de cada característica, de modo que los valores resultantes tengan una media de 0.
+   - Luego escala las características a varianza unitaria (dividiendo por la desviación estándar).
+   - [Scikit-Learn proporciona la clase `StandardScaler`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) para esta tarea.
+
+   ```python
+   from sklearn.preprocessing import StandardScaler
+   scaler = StandardScaler()
+   scaled_data = scaler.fit_transform(data)
+   ```
+
+> [!NOTE] **Notas importantes:**
+>
+> - El **escalado de características generalmente no se aplica a la variable objetivo** (la que intentas predecir).
+> - El **escalado de características no suele ser necesario en modelos basados en árboles** (por ejemplo, Random Forest), ya que estos pueden manejar características con diferentes escalas.
+
+**📖 Lectura adicional**
+
+- **[Feature Scaling - why is it required?](https://rahul-saini.medium.com/feature-scaling-why-it-is-required-8a93df1af310)** por Rahul Saini.
+- **[Feature Scaling with Scikit-Learn](https://benalexkeen.com/feature-scaling-with-scikit-learn/)** por Ben Alex Keen.
+- **[Feature Scaling for Machine Learning: Understanding the Difference Between Normalization vs. Standardization](https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/)** por Aniruddha Bhandari.
 
 ---
 
