@@ -15,13 +15,12 @@
 7. [Convertir Datos en Números](#7-convertir-datos-en-números)
 8. [Manejo de Valores Faltantes](#8-manejo-de-valores-faltantes)
 9. [Escalado de Características (Feature Scaling)](#9-escalado-de-características-feature-scaling)
-10. [Elegir el Modelo Correcto (Regresión)](#10-elegir-el-modelo-correcto-regresión)
-11. [Árboles de Decisión (Decision Trees)](#10-árboles-de-decisión-decision-trees)
-12. [Funcionamiento de los Algoritmos de ML](#11-funcionamiento-de-los-algoritmos-de-ml)
-13. [Elegir el Modelo Correcto (Clasificación)](#12-elegir-el-modelo-correcto-clasificación)
-14. [Ajustar un Modelo a los Datos](#13-ajustar-un-modelo-a-los-datos)
-15. [Predicciones con un Modelo](#14-predicciones-con-un-modelo)
-16. [Evaluación de Modelos de Machine Learning](#15-evaluación-de-modelos-de-machine-learning)
+10. [Elegir el Modelo Correcto](#10-elegir-el-modeloestimador-adecuado)
+11. [Árboles de Decisión (Decision Trees)](#11-árboles-de-decisión)
+12. [Modelos de Ensamblaje](#12-modelos-de-ensamblaje)
+13. [Ajustar un Modelo a los Datos](#13-ajustar-un-modelo-a-los-datos)
+14. [Hacer Predicciones con un Modelo](#14-predicciones-con-un-modelo)
+15. [Evaluación de Modelos de Machine Learning](#15-evaluación-de-modelos-de-machine-learning)
 17. [Mejorar un Modelo de Machine Learning](#16-mejorar-un-modelo-de-machine-learning)
 18. [Guardar y Cargar Modelos](#17-guardar-y-cargar-modelos)
 19. [Resumen Completo y Práctica Final](#18-resumen-completo-y-práctica-final)
@@ -44,9 +43,7 @@ Machine Learning (ML) es una rama de la inteligencia artificial que permite a la
   - **No supervisado:** Identifica patrones en datos sin etiquetas (ej. clustering).
   - **Aprendizaje por refuerzo:** Aprende interactuando con el entorno para maximizar recompensas.
 
-<img src="../assets/section-7/machine-learning.webp" alt="Qué es machine learning" width="800" style="padding:24px; margin: 24px auto; background: white;">
-
----
+<img src="../assets/section-7/machine-learning.webp" alt="Qué es machine learning" width="400" style="padding:24px; margin: 24px auto; background: white;">
 
 ## **2. ¿Qué es Scikit-Learn?**
 
@@ -77,8 +74,6 @@ Para cualquier problema, las etapas son similares:
 4. Evaluar el modelo para ver si ha aprendido algo.
 
 Scikit-Learn ofrece implementaciones en Python para realizar todas estas tareas, evitando la necesidad de construirlas desde cero.
-
----
 
 ## **3. Workflow en Scikit-Learn**
 
@@ -111,8 +106,6 @@ model.fit(X_train, y_train) # Ajustar el modelo
 predictions = model.predict(X_test) # Hacer predicciones
 error = mean_absolute_error(y_test, predictions) # Evaluar el modelo
 ```
-
----
 
 ## **4. Debugging Warnings en Jupyter**
 
@@ -243,8 +236,6 @@ print(sklearn.__version__)
 - Consulta siempre la documentación oficial y las notas de la versión:
   - 🔗 [Notas de versión de Scikit-Learn](https://scikit-learn.org/stable/whats_new.html).
 
----
-
 ## **5. División de Datos (Splitting Data)**
 
 Un paso crucial en cualquier proyecto de machine learning es dividir los datos en conjuntos de entrenamiento y prueba para evaluar cómo se comporta el modelo con datos no vistos.
@@ -269,11 +260,9 @@ X_train, X_test, y_train, y_test = train_test_split(
 - **`test_size`:** Define el porcentaje de datos asignados al conjunto de prueba.
 - **`random_state`:** Asegura que los datos se dividan de la misma forma en cada ejecución, útil para experimentos reproducibles.
 
----
-
 ## **6. Limpieza y Transformación de Datos (Clean, Transform, Reduce)**
 
-#### **1. Limpieza (`Clean`):**
+#### **Limpieza (`Clean`):**
 
 - Elimina valores faltantes o erróneos para evitar que distorsionen los resultados del modelo.
 - Por ejemplo, puedes usar Pandas para eliminar filas con valores nulos:
@@ -281,7 +270,7 @@ X_train, X_test, y_train, y_test = train_test_split(
   X.dropna(inplace=True)
   ```
 
-#### **2. Transformación (`Transform`):**
+#### **Transformación (`Transform`):**
 
 - Convierte los datos a formatos adecuados, como escalar valores numéricos o codificar variables categóricas.
 - Ejemplo: Escalar características numéricas usando `StandardScaler`:
@@ -291,7 +280,7 @@ X_train, X_test, y_train, y_test = train_test_split(
   X_scaled = scaler.fit_transform(X)
   ```
 
-#### **3. Reducción (`Reduce`):**
+#### **Reducción (`Reduce`):**
 
 - Simplifica los datos, por ejemplo, reduciendo la dimensionalidad con PCA si el conjunto de datos tiene muchas características.
 - Ejemplo:
@@ -311,12 +300,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 > print(X_train.shape, X_test.shape)
 > print(y_train.value_counts(), y_test.value_counts())
 > ```
-
----
-
-Claro, aquí tienes una explicación más detallada y útil sobre cómo trabajar con datos categóricos y convertirlos a números:
-
----
 
 ## **7. Convertir Datos en Números**
 
@@ -356,7 +339,7 @@ print(data)
 
 El `OneHotEncoder` crea columnas binarias (0 o 1) para cada categoría, evitando que el modelo asuma relaciones ordinales entre categorías.
 
-<img src="../assets/section-7/one_hot_encoding.png" alt="One Hot Encoding" width="800" style="padding:24px; margin: 24px auto; background: white;">
+<img src="../assets/section-7/one_hot_encoding.png" alt="One Hot Encoding" width="600" style="margin: 24px auto; background: white;">
 
 Ejemplo:
 
@@ -433,10 +416,6 @@ print(transformed_data)
 2. Usa `OneHotEncoder` si quieres evitar relaciones ordinales falsas entre categorías.
 3. Si trabajas con datasets más complejos (mixtos con columnas categóricas y numéricas), utiliza `ColumnTransformer` para combinar transformaciones.
 
-Esto hace que tus datos estén listos para ser utilizados por algoritmos de machine learning que requieren representaciones numéricas.
-
----
-
 ## **8. Manejo de Valores Faltantes**
 
 ### Con pandas:
@@ -452,8 +431,6 @@ from sklearn.impute import SimpleImputer
 imputer = SimpleImputer(strategy="mean")
 imputed = imputer.fit_transform(df)
 ```
-
----
 
 ## **9. Escalado de Características (Feature Scaling)**
 
@@ -494,46 +471,89 @@ Para solucionar esto, existen dos tipos principales de escalado de característi
 - **[Feature Scaling with Scikit-Learn](https://benalexkeen.com/feature-scaling-with-scikit-learn/)** por Ben Alex Keen.
 - **[Feature Scaling for Machine Learning: Understanding the Difference Between Normalization vs. Standardization](https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/)** por Aniruddha Bhandari.
 
----
+## **10. Elegir el modelo/estimador adecuado**
 
-## **9. Elegir el Modelo Correcto (Regresión)**
+A menudo, la parte más difícil de resolver un problema de aprendizaje automático puede ser encontrar el estimador adecuado para el trabajo. Diferentes estimadores son más adecuados para distintos tipos de datos y problemas.
 
-- Modelos comunes para regresión:
-  - `LinearRegression`
-  - `Ridge`
-  - `RandomForestRegressor`
+Este [diagrama de flujo de Scikit-learn](https://scikit-learn.org/1.5/machine_learning_map.html) está diseñado como una guía aproximada para ayudar a los usuarios a abordar problemas en relación con qué estimadores probar en sus datos. Puedes hacer clic en cualquier estimador del gráfico para ver su documentación. El emoji 😭 debe interpretarse como *"si este estimador no logra el resultado deseado, sigue la flecha e intenta con el siguiente"*. 
 
----
+<img src="../assets/section-7/ml_map.svg" alt="Diagrama de un Árbol de decisión" width="800" style="padding:24px; margin: 24px auto; background: white;">
 
-## **10. Árboles de Decisión (Decision Trees)**
+## **11. Árboles de Decisión**
 
-Un modelo que utiliza reglas condicionales para dividir los datos en ramas.
+Un **Árbol de Decisión** es un modelo de machine learning que utiliza una estructura jerárquica de decisiones para dividir los datos en ramas según ciertas reglas condicionales. Se utiliza tanto en problemas de **clasificación** como de **regresión**.
+
+<img src="../assets/section-7/decision-tree.png" alt="Diagrama de un Árbol de decisión" width="500" style="padding:24px; margin: 24px auto; background: white;">
+
+### **Características principales**
+- **Fácil de interpretar:** La estructura de decisiones permite visualizar cómo el modelo llega a una conclusión.
+- **Capacidad de manejar datos categóricos y numéricos.**
+- **Propenso al overfitting:** Sin regularización, los árboles de decisión pueden ajustarse demasiado a los datos de entrenamiento.
+
+### **Implementación en Scikit-Learn**
 
 ```python
 from sklearn.tree import DecisionTreeClassifier
+
+# Crear el modelo
 model = DecisionTreeClassifier()
+
+# Entrenar el modelo
+model.fit(X_train, y_train)
+
+# Hacer predicciones
+predictions = model.predict(X_test)
 ```
 
----
+### **Visualización de un Árbol de Decisión**
 
-## **11. Funcionamiento de los Algoritmos de ML**
+Puedes visualizar el árbol utilizando `plot_tree` de Scikit-Learn:
 
-### Tipos:
+```python
+from sklearn.tree import plot_tree
 
-- Algoritmos lineales (ej. regresión lineal).
-- Modelos basados en árboles (ej. Random Forest).
-- Redes neuronales para datos complejos.
+plt.figure(figsize=(12, 8))
+plot_tree(model, filled=True, feature_names=X.columns, class_names=["Clase 0", "Clase 1"])
+plt.show()
+```
 
----
+## **12. Modelos de Ensamblaje**
 
-## **12. Elegir el Modelo Correcto (Clasificación)**
+Un **Modelo de Ensamblaje** combina múltiples modelos (como árboles de decisión) para mejorar la precisión, robustez y generalización. 
 
-- Modelos comunes para clasificación:
-  - `LogisticRegression`
-  - `SVC`
-  - `RandomForestClassifier`
+### **Tipos de Modelos de Ensamblaje**
+1. **Bagging (Bootstrap Aggregating):** Entrena varios modelos independientes (como árboles de decisión) en subconjuntos de los datos y combina sus predicciones (e.g., Random Forest).
+2. **Boosting:** Entrena modelos secuencialmente, corrigiendo los errores del modelo anterior (e.g., Gradient Boosting, XGBoost).
+3. **Stacking:** Combina diferentes tipos de modelos y utiliza otro modelo para aprender de sus predicciones.
 
----
+### **Random Forest**
+
+Un **Random Forest** es un tipo de modelo de ensamblaje basado en Bagging que combina múltiples árboles de decisión. 
+
+<img src="../assets/section-7/random_forest.png" alt="Random Forest Conceptual Diagram" width="500" style="margin: 16px auto; background: white;">
+
+#### **Ventajas:**
+- Reduce el overfitting que puede ocurrir con un solo árbol de decisión.
+- Maneja características numéricas y categóricas.
+- Es robusto frente a datos faltantes y valores atípicos.
+
+#### **Implementación en Scikit-Learn**
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+# Crear el modelo
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+
+# Entrenar el modelo
+rf_model.fit(X_train, y_train)
+
+# Hacer predicciones
+rf_predictions = rf_model.predict(X_test)
+```
+
+### **Referencias adicionales**
+- 🔗 [Explicación Simple de Random Forest](https://williamkoehrsen.medium.com/random-forest-simple-explanation-377895a60d2d)
 
 ## **13. Ajustar un Modelo a los Datos**
 
@@ -541,31 +561,190 @@ model = DecisionTreeClassifier()
 model.fit(X_train, y_train)
 ```
 
----
+El método `.fit()` en Scikit-Learn se utiliza para **entrenar un modelo**. 
 
-## **14. Predicciones con un Modelo**
+Toma como entrada:
+- `X_train`: Los datos de entrada (características o variables independientes).
+- `y_train`: Las etiquetas (objetivo o variable dependiente).
+
+Durante este proceso:
+1. El modelo aprende los **patrones** o **relaciones** entre `X_train` y `y_train`.
+2. Los parámetros del modelo se ajustan para minimizar el error y mejorar la predicción en futuros datos.
+
+> `.fit()` ajusta el modelo a los datos de entrenamiento para que pueda realizar predicciones en datos nuevos.
+
+## **14. Hacer Predicciones con un Modelo**
+
+Una vez que el modelo ha sido ajustado a los datos mediante `.fit()`, puedes usarlo para hacer predicciones sobre nuevos datos. Esto se logra principalmente utilizando los métodos `predict()` y `predict_proba()`.
+
+### **Métodos de Predicción**
+
+#### **`predict()`**
+El método `predict()` genera predicciones concretas basadas en el modelo ajustado. 
+
+- Para problemas de **clasificación**, devuelve la **clase más probable**.
+- Para problemas de **regresión**, devuelve el **valor predicho** (número).
 
 ```python
-predictions = model.predict(X_test)
+y_preds = model.predict(X_test)  # Predicciones sobre datos de prueba
 ```
 
----
+#### **`predict_proba()`**
+El método `predict_proba()` genera las probabilidades de pertenencia a cada clase en problemas de **clasificación**.
+
+- Útil si quieres entender la confianza del modelo en su predicción.
+- Devuelve una matriz donde cada fila corresponde a una instancia y cada columna a la probabilidad de una clase.
+
+```python
+y_proba = model.predict_proba(X_test)
+```
+
+Ejemplo de salida para una clasificación binaria:
+```python
+array([[0.1, 0.9],  # Probabilidad de clase 0 y clase 1
+       [0.8, 0.2]])
+```
+
+### **Evaluar Predicciones**
+
+Existen varias formas de comparar las predicciones del modelo con las etiquetas verdaderas para evaluar su desempeño:
+
+1. **Comparación directa**  
+   Compara las predicciones con las etiquetas verdaderas utilizando operadores lógicos.
+   ```python
+   np.mean(y_preds == y_test)
+   ```
+
+2. **Método `.score()` del modelo**  
+   Muchos modelos de Scikit-Learn tienen un método `.score()` que calcula una métrica de desempeño estándar (por ejemplo, precisión para clasificación o R² para regresión).
+   ```python
+   model.score(X_test, y_test)
+   ```
+
+3. **Métricas específicas con Scikit-Learn**  
+   Usa funciones del módulo `metrics` para calcular métricas de evaluación detalladas.
+   ```python
+   from sklearn.metrics import accuracy_score
+   accuracy_score(y_test, y_preds)
+   ```
+
+### **Ejemplo Completo**
+
+```python
+# Hacer predicciones
+y_preds = model.predict(X_test)
+
+# Calcular precisión directamente
+accuracy = np.mean(y_preds == y_test)
+print(f"Accuracy (manual): {accuracy}")
+
+# Calcular precisión con .score()
+model_accuracy = model.score(X_test, y_test)
+print(f"Accuracy (model score): {model_accuracy}")
+
+# Calcular precisión con una métrica específica
+from sklearn.metrics import accuracy_score
+accuracy_metric = accuracy_score(y_test, y_preds)
+print(f"Accuracy (accuracy_score): {accuracy_metric}")
+```
+
+> **Nota:** Aunque estas tres formas pueden producir resultados similares, usar funciones específicas de `metrics` como `accuracy_score` es más flexible para escenarios complejos, como calcular múltiples métricas a la vez.
 
 ## **15. Evaluación de Modelos de Machine Learning**
 
-### Clasificación:
+La evaluación de modelos de machine learning depende del tipo de problema: clasificación o regresión. A continuación, se explican las métricas más comunes y cómo utilizarlas de forma práctica.
 
-- `accuracy_score`
-- `confusion_matrix`
-- `classification_report`
+### **Clasificación**
 
-### Regresión:
+1. **Cross-Validation**  
+   Divide los datos en múltiples partes para entrenar y probar el modelo varias veces, asegurando una evaluación más robusta y menos dependiente de una sola división de datos.
+   ```python
+   from sklearn.model_selection import cross_val_score
+   scores = cross_val_score(model, X, y, cv=5)  # 5 divisiones
+   print("Mean Cross-Validation Score:", scores.mean())
+   ```
 
-- `r2_score`
-- `mean_absolute_error`
-- `mean_squared_error`
+   <img src="../assets/section-7/grid_search_cross_validation.png" alt="Validación cruzada" width="400" style="padding:24px; margin: 24px auto; background: white;">
+
+2. **Accuracy**  
+   Porcentaje de predicciones correctas entre el total de predicciones.
+   ```python
+   from sklearn.metrics import accuracy_score
+   accuracy = accuracy_score(y_test, y_preds)
+   print("Accuracy:", accuracy)
+   ```
+
+3. **ROC Curve**  
+   Muestra la relación entre la tasa de verdaderos positivos y la tasa de falsos positivos. Útil para evaluar modelos binarios.
+   ```python
+   from sklearn.metrics import roc_curve
+   fpr, tpr, thresholds = roc_curve(y_test, y_proba[:, 1])
+   plt.plot(fpr, tpr)
+   ```
+
+   <img src="../assets/section-7/interpreting-the-ROC-curve.webp" alt="Interpretación de la curva ROC" width="500" style="margin: 24px auto; background: white;">
+
+4. **ROC Curve + AUC (Área Bajo la Curva)**  
+   Resume el desempeño del modelo en un solo valor (AUC). Cuanto más cerca de 1, mejor.
+   ```python
+   from sklearn.metrics import roc_auc_score
+   auc = roc_auc_score(y_test, y_proba[:, 1])
+   print("AUC:", auc)
+   ```
+
+   <img src="../assets/section-7/auc.png" alt="Área bajo la curva" width="500" style="margin: 24px auto; background: white;">
+
+5. **Matriz de Confusión**  
+   Tabla que muestra las predicciones correctas e incorrectas para cada clase.
+   ```python
+   from sklearn.metrics import confusion_matrix
+   cm = confusion_matrix(y_test, y_preds)
+   print(cm)
+   ```
+
+6. **Classification Report**  
+   Resumen detallado de métricas como precisión, recall y F1-score.
+   ```python
+   from sklearn.metrics import classification_report
+   report = classification_report(y_test, y_preds)
+   print(report)
+   ```
 
 ---
+
+### **Regresión**
+
+1. **R² Score**  
+   Indica qué porcentaje de la variación en los datos depende de las características del modelo. El mejor valor posible es 1.0.
+   ```python
+   from sklearn.metrics import r2_score
+   r2 = r2_score(y_test, y_preds)
+   print("R² Score:", r2)
+   ```
+
+2. **Mean Absolute Error (MAE)**  
+   Promedio de las diferencias absolutas entre valores predichos y reales. Mide el error en las mismas unidades que la variable dependiente.
+   ```python
+   from sklearn.metrics import mean_absolute_error
+   mae = mean_absolute_error(y_test, y_preds)
+   print("MAE:", mae)
+   ```
+
+3. **Mean Squared Error (MSE)**  
+   Promedio de los errores al cuadrado, penalizando más los errores grandes.
+   ```python
+   from sklearn.metrics import mean_squared_error
+   mse = mean_squared_error(y_test, y_preds)
+   print("MSE:", mse)
+   ```
+
+---
+
+### **Consejo Práctico**
+- **Clasificación:** Usa `accuracy_score` como métrica inicial y complementa con `classification_report` para analizar más detalles. La `roc_auc_score` es ideal si tienes probabilidades.
+- **Regresión:** Comienza con `r2_score` para evaluar el ajuste general del modelo y complementa con `mae` o `mse` dependiendo de si los errores grandes son críticos o no.
+
+- 🔗 [Metrics and scoring: quantifying the quality of predictions - Scikit-Learn](https://scikit-learn.org/stable/modules/model_evaluation)
 
 ## **16. Mejorar un Modelo de Machine Learning**
 
