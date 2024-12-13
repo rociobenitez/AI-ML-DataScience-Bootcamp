@@ -21,9 +21,8 @@
 13. [Ajustar un Modelo a los Datos](#13-ajustar-un-modelo-a-los-datos)
 14. [Hacer Predicciones con un Modelo](#14-predicciones-con-un-modelo)
 15. [Evaluación de Modelos de Machine Learning](#15-evaluación-de-modelos-de-machine-learning)
-17. [Mejorar un Modelo de Machine Learning](#16-mejorar-un-modelo-de-machine-learning)
-18. [Guardar y Cargar Modelos](#17-guardar-y-cargar-modelos)
-19. [Resumen Completo y Práctica Final](#18-resumen-completo-y-práctica-final)
+16. [Mejorar un Modelo de Machine Learning](#16-mejorar-un-modelo-de-machine-learning)
+17. [Guardar y Cargar Modelos](#17-guardar-y-cargar-modelos)
 
 > [!NOTE] > **¿Cómo obtener ayuda?**
 >
@@ -475,7 +474,7 @@ Para solucionar esto, existen dos tipos principales de escalado de característi
 
 A menudo, la parte más difícil de resolver un problema de aprendizaje automático puede ser encontrar el estimador adecuado para el trabajo. Diferentes estimadores son más adecuados para distintos tipos de datos y problemas.
 
-Este [diagrama de flujo de Scikit-learn](https://scikit-learn.org/1.5/machine_learning_map.html) está diseñado como una guía aproximada para ayudar a los usuarios a abordar problemas en relación con qué estimadores probar en sus datos. Puedes hacer clic en cualquier estimador del gráfico para ver su documentación. El emoji 😭 debe interpretarse como *"si este estimador no logra el resultado deseado, sigue la flecha e intenta con el siguiente"*. 
+Este [diagrama de flujo de Scikit-learn](https://scikit-learn.org/1.5/machine_learning_map.html) está diseñado como una guía aproximada para ayudar a los usuarios a abordar problemas en relación con qué estimadores probar en sus datos. Puedes hacer clic en cualquier estimador del gráfico para ver su documentación. El emoji 😭 debe interpretarse como _"si este estimador no logra el resultado deseado, sigue la flecha e intenta con el siguiente"_.
 
 <img src="../assets/section-7/ml_map.svg" alt="Diagrama de un Árbol de decisión" width="800" style="padding:24px; margin: 24px auto; background: white;">
 
@@ -486,6 +485,7 @@ Un **Árbol de Decisión** es un modelo de machine learning que utiliza una estr
 <img src="../assets/section-7/decision-tree.png" alt="Diagrama de un Árbol de decisión" width="500" style="padding:24px; margin: 24px auto; background: white;">
 
 ### **Características principales**
+
 - **Fácil de interpretar:** La estructura de decisiones permite visualizar cómo el modelo llega a una conclusión.
 - **Capacidad de manejar datos categóricos y numéricos.**
 - **Propenso al overfitting:** Sin regularización, los árboles de decisión pueden ajustarse demasiado a los datos de entrenamiento.
@@ -519,20 +519,22 @@ plt.show()
 
 ## **12. Modelos de Ensamblaje**
 
-Un **Modelo de Ensamblaje** combina múltiples modelos (como árboles de decisión) para mejorar la precisión, robustez y generalización. 
+Un **Modelo de Ensamblaje** combina múltiples modelos (como árboles de decisión) para mejorar la precisión, robustez y generalización.
 
 ### **Tipos de Modelos de Ensamblaje**
+
 1. **Bagging (Bootstrap Aggregating):** Entrena varios modelos independientes (como árboles de decisión) en subconjuntos de los datos y combina sus predicciones (e.g., Random Forest).
 2. **Boosting:** Entrena modelos secuencialmente, corrigiendo los errores del modelo anterior (e.g., Gradient Boosting, XGBoost).
 3. **Stacking:** Combina diferentes tipos de modelos y utiliza otro modelo para aprender de sus predicciones.
 
 ### **Random Forest**
 
-Un **Random Forest** es un tipo de modelo de ensamblaje basado en Bagging que combina múltiples árboles de decisión. 
+Un **Random Forest** es un tipo de modelo de ensamblaje basado en Bagging que combina múltiples árboles de decisión.
 
 <img src="../assets/section-7/random_forest.png" alt="Random Forest Conceptual Diagram" width="500" style="margin: 16px auto; background: white;">
 
 #### **Ventajas:**
+
 - Reduce el overfitting que puede ocurrir con un solo árbol de decisión.
 - Maneja características numéricas y categóricas.
 - Es robusto frente a datos faltantes y valores atípicos.
@@ -553,6 +555,7 @@ rf_predictions = rf_model.predict(X_test)
 ```
 
 ### **Referencias adicionales**
+
 - 🔗 [Explicación Simple de Random Forest](https://williamkoehrsen.medium.com/random-forest-simple-explanation-377895a60d2d)
 
 ## **13. Ajustar un Modelo a los Datos**
@@ -561,13 +564,15 @@ rf_predictions = rf_model.predict(X_test)
 model.fit(X_train, y_train)
 ```
 
-El método `.fit()` en Scikit-Learn se utiliza para **entrenar un modelo**. 
+El método `.fit()` en Scikit-Learn se utiliza para **entrenar un modelo**.
 
 Toma como entrada:
+
 - `X_train`: Los datos de entrada (características o variables independientes).
 - `y_train`: Las etiquetas (objetivo o variable dependiente).
 
 Durante este proceso:
+
 1. El modelo aprende los **patrones** o **relaciones** entre `X_train` y `y_train`.
 2. Los parámetros del modelo se ajustan para minimizar el error y mejorar la predicción en futuros datos.
 
@@ -580,7 +585,8 @@ Una vez que el modelo ha sido ajustado a los datos mediante `.fit()`, puedes usa
 ### **Métodos de Predicción**
 
 #### **`predict()`**
-El método `predict()` genera predicciones concretas basadas en el modelo ajustado. 
+
+El método `predict()` genera predicciones concretas basadas en el modelo ajustado.
 
 - Para problemas de **clasificación**, devuelve la **clase más probable**.
 - Para problemas de **regresión**, devuelve el **valor predicho** (número).
@@ -590,6 +596,7 @@ y_preds = model.predict(X_test)  # Predicciones sobre datos de prueba
 ```
 
 #### **`predict_proba()`**
+
 El método `predict_proba()` genera las probabilidades de pertenencia a cada clase en problemas de **clasificación**.
 
 - Útil si quieres entender la confianza del modelo en su predicción.
@@ -600,6 +607,7 @@ y_proba = model.predict_proba(X_test)
 ```
 
 Ejemplo de salida para una clasificación binaria:
+
 ```python
 array([[0.1, 0.9],  # Probabilidad de clase 0 y clase 1
        [0.8, 0.2]])
@@ -611,12 +619,14 @@ Existen varias formas de comparar las predicciones del modelo con las etiquetas 
 
 1. **Comparación directa**  
    Compara las predicciones con las etiquetas verdaderas utilizando operadores lógicos.
+
    ```python
    np.mean(y_preds == y_test)
    ```
 
 2. **Método `.score()` del modelo**  
    Muchos modelos de Scikit-Learn tienen un método `.score()` que calcula una métrica de desempeño estándar (por ejemplo, precisión para clasificación o R² para regresión).
+
    ```python
    model.score(X_test, y_test)
    ```
@@ -652,106 +662,229 @@ print(f"Accuracy (accuracy_score): {accuracy_metric}")
 
 ## **15. Evaluación de Modelos de Machine Learning**
 
-La evaluación de modelos de machine learning depende del tipo de problema: clasificación o regresión. A continuación, se explican las métricas más comunes y cómo utilizarlas de forma práctica.
+Evaluar los resultados de un modelo de machine learning es tan crucial como construirlo. Cada tipo de problema, ya sea de **clasificación o regresión**, requiere métricas de evaluación específicas que permitan medir el rendimiento del modelo de manera adecuada. A continuación, se describen algunas de las métricas más importantes y utilizadas para evaluar modelos en ambos contextos.
 
-### **Clasificación**
+### Métricas/Técnicas de Evaluación para Modelos de **Clasificación**
 
-1. **Cross-Validation**  
-   Divide los datos en múltiples partes para entrenar y probar el modelo varias veces, asegurando una evaluación más robusta y menos dependiente de una sola división de datos.
-   ```python
-   from sklearn.model_selection import cross_val_score
-   scores = cross_val_score(model, X, y, cv=5)  # 5 divisiones
-   print("Mean Cross-Validation Score:", scores.mean())
-   ```
+#### **Cross-Validation** (Validación Cruzada)
 
-   <img src="../assets/section-7/grid_search_cross_validation.png" alt="Validación cruzada" width="400" style="padding:24px; margin: 24px auto; background: white;">
+Divide los datos en múltiples partes para entrenar y probar el modelo varias veces, asegurando una evaluación más robusta y menos dependiente de una sola división de datos.
 
-2. **Accuracy**  
-   Porcentaje de predicciones correctas entre el total de predicciones.
-   ```python
-   from sklearn.metrics import accuracy_score
-   accuracy = accuracy_score(y_test, y_preds)
-   print("Accuracy:", accuracy)
-   ```
+```python
+from sklearn.model_selection import cross_val_score
+scores = cross_val_score(model, X, y, cv=5)  # 5 divisiones
+print("Mean Cross-Validation Score:", scores.mean())
+```
 
-3. **ROC Curve**  
-   Muestra la relación entre la tasa de verdaderos positivos y la tasa de falsos positivos. Útil para evaluar modelos binarios.
-   ```python
-   from sklearn.metrics import roc_curve
-   fpr, tpr, thresholds = roc_curve(y_test, y_proba[:, 1])
-   plt.plot(fpr, tpr)
-   ```
+Divide el conjunto de datos en múltiples partes, entrena y evalúa el modelo en cada una y calcula el rendimiento promedio.
 
-   <img src="../assets/section-7/interpreting-the-ROC-curve.webp" alt="Interpretación de la curva ROC" width="500" style="margin: 24px auto; background: white;">
+<img src="../assets/section-7/grid_search_cross_validation.png" alt="Validación cruzada" width="400" style="padding:24px; margin: 24px auto; background: white;">
 
-4. **ROC Curve + AUC (Área Bajo la Curva)**  
-   Resume el desempeño del modelo en un solo valor (AUC). Cuanto más cerca de 1, mejor.
-   ```python
-   from sklearn.metrics import roc_auc_score
-   auc = roc_auc_score(y_test, y_proba[:, 1])
-   print("AUC:", auc)
-   ```
+> 🔗 [Corss-validation: evaluating estimator performance (Scikit-Learn)](https://scikit-learn.org/stable/modules/cross_validation.html)
 
-   <img src="../assets/section-7/auc.png" alt="Área bajo la curva" width="500" style="margin: 24px auto; background: white;">
+#### **Accuracy** (Exactitud)
 
-5. **Matriz de Confusión**  
-   Tabla que muestra las predicciones correctas e incorrectas para cada clase.
-   ```python
-   from sklearn.metrics import confusion_matrix
-   cm = confusion_matrix(y_test, y_preds)
-   print(cm)
-   ```
+Porcentaje de predicciones correctas entre el total de predicciones.
 
-6. **Classification Report**  
-   Resumen detallado de métricas como precisión, recall y F1-score.
-   ```python
-   from sklearn.metrics import classification_report
-   report = classification_report(y_test, y_preds)
-   print(report)
-   ```
+```python
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test, y_preds)
+print("Accuracy:", accuracy)
+```
+
+Es la proporción de predicciones correctas del modelo, expresada en forma decimal. Una precisión perfecta es igual a 1.0.
+
+#### **Precision** (Precisión)
+
+Indica la proporción de identificaciones positivas (predicciones de clase 1 del modelo) que fueron realmente correctas. Un modelo sin falsos positivos tiene una precisión de 1.0.
+
+🔗 [`precision_score` Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score)
+
+#### **Recall** (Exhaustividad)
+
+Mide la proporción de verdaderos positivos que fueron clasificados correctamente. Un modelo sin falsos negativos tiene un recall de 1.0.
+
+```python
+from sklearn.metrics import recall_score
+recall_score(y_true, y_pred, average='macro')
+```
+
+🔗 [`recall_score` Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score)
+
+#### **F1 Score**
+
+Combina precisión y recall en una única métrica. Un modelo perfecto alcanza un F1 score de 1.0.
+
+🔗 [`f1_score` Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score)
+
+#### **ROC Curve** (Curva ROC)
+
+Gráfico que muestra la relación entre la **tasa de verdaderos positivos** y la **tasa de falsos positivos**. Útil para evaluar modelos binarios.
+
+<img src="../assets/section-7/tpr_fpr.png" alt="Tasa verdaderos positivos y falsos positivos" width="500" style="margin: 24px auto; background: white;">
+
+```python
+from sklearn.metrics import roc_curve
+fpr, tpr, thresholds = roc_curve(y_test, y_proba[:, 1])
+plt.plot(fpr, tpr)
+```
+
+<img src="../assets/section-7/interpreting-the-ROC-curve.webp" alt="Interpretación de la curva ROC" width="500" style="margin: 24px auto; background: white;">
+
+#### **ROC Curve + AUC (Área Bajo la Curva)**
+
+Resume el desempeño del modelo en un solo valor (AUC). El AUC representa el área debajo de la curva ROC. Un modelo perfecto tiene un AUC de `1.0`.
+
+- 🔗 [Receiver operating characteristic - Wikipedia](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)
+- 🔗 [Curva ROC - Wikipedia](https://es.wikipedia.org/wiki/Curva_ROC)
+
+```python
+from sklearn.metrics import roc_auc_score
+auc = roc_auc_score(y_test, y_proba[:, 1])
+print("AUC:", auc)
+```
+
+Las **curvas ROC** y las **métricas AUC** son métricas de evaluación para modelos de clasificación binaria (un modelo que predice una cosa u otra, como enfermedad cardíaca o no).
+
+La **curva ROC** compara la tasa de verdaderos positivos (tpr) versus la tasa de falsos positivos (fpr) en diferentes umbrales de clasificación.
+
+- Verdadero positivo = el modelo predice 1 cuando la verdad es 1
+- Falso positivo = el modelo predice 1 cuando la verdad es 0
+- Verdadero negativo = el modelo predice 0 cuando la verdad es 0
+- Falso negativo = el modelo predice 0 cuando la verdad es 1
+
+La **[métrica AUC](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)** te dice qué tan bien está tu modelo al elegir entre clases (por ejemplo, qué tan bien está al decidir si alguien tiene enfermedad cardíaca o no). Un modelo perfecto obtendrá una puntuación AUC de `1`.
+
+<img src="../assets/section-7/auc.png" alt="Área bajo la curva" width="500" style="margin: 24px auto; background: white;">
+
+> [!NOTE] > **Recursos para más información sobre estas métricas:**
+>
+> - [ROC and AUC, Clearly Explained!](https://www.youtube.com/watch?v=4jRBRDbJemM) por StatQuest
+> - [Documentación ROC en Scikit-Learn](https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html) (contiene ejemplos de código)
+> - [Cómo se calculan la curva ROC y AUC](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc?hl=es-419) por el equipo de Machine Learning de Google.
+
+#### **Matriz de Confusión**
+
+Tabla que muestra las predicciones correctas e incorrectas para cada clase.
+
+```python
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_preds)
+print(cm)
+```
+
+También es posible visualizar una matriz de confusión usando `pd.crosstab()`:
+
+```python
+pd.crosstab(y_test,
+            y_preds,
+            rownames=["Actual Label"],
+            colnames=["Predicted Label"])
+```
+
+Compara los valores predichos con los valores reales en forma tabular. Si el modelo es 100% preciso, todos los valores estarán en la diagonal de la matriz.
+
+<img src="../assets/section-7/matrix.png" alt="Anatomía matriz de confusión" width="500" style="margin: 24px auto; background: white;">
+
+> 🔗 [Confusion Matrix - Wikipedia](https://en.wikipedia.org/wiki/Confusion_matrix)
+> 🔗 [Simple guide to Confusion Matrix terminology - dataschool](https://www.dataschool.io/simple-guide-to-confusion-matrix-terminology/)
+
+#### **Classification Report**
+
+[Scikit-learn ofrece la función `classification_report()`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html), que muestra un resumen detallado de métricas clave como precisión, recall y F1 score.
+
+```python
+from sklearn.metrics import classification_report
+report = classification_report(y_test, y_preds)
+print(report)
+```
 
 ---
 
-### **Regresión**
-
-1. **R² Score**  
-   Indica qué porcentaje de la variación en los datos depende de las características del modelo. El mejor valor posible es 1.0.
-   ```python
-   from sklearn.metrics import r2_score
-   r2 = r2_score(y_test, y_preds)
-   print("R² Score:", r2)
-   ```
-
-2. **Mean Absolute Error (MAE)**  
-   Promedio de las diferencias absolutas entre valores predichos y reales. Mide el error en las mismas unidades que la variable dependiente.
-   ```python
-   from sklearn.metrics import mean_absolute_error
-   mae = mean_absolute_error(y_test, y_preds)
-   print("MAE:", mae)
-   ```
-
-3. **Mean Squared Error (MSE)**  
-   Promedio de los errores al cuadrado, penalizando más los errores grandes.
-   ```python
-   from sklearn.metrics import mean_squared_error
-   mse = mean_squared_error(y_test, y_preds)
-   print("MSE:", mse)
-   ```
+> **¿Qué métrica de clasificación usar?** > **Accuracy:** Ideal si las clases están equilibradas (por ejemplo, igual cantidad de muestras con etiquetas 0 y 1).
+> **Precision y Recall:** Útiles cuando las clases están desbalanceadas.
+>
+> - Si los falsos positivos son más perjudiciales que los falsos negativos, prioriza la **precisión**.
+> - Si los falsos negativos son más perjudiciales que los falsos positivos, prioriza el **recall**.
+>   **F1 Score:** Buena combinación entre precisión y recall.
+>   **Matriz de confusión:** Siempre es útil para visualizar cómo funciona el modelo.
 
 ---
 
-### **Consejo Práctico**
-- **Clasificación:** Usa `accuracy_score` como métrica inicial y complementa con `classification_report` para analizar más detalles. La `roc_auc_score` es ideal si tienes probabilidades.
-- **Regresión:** Comienza con `r2_score` para evaluar el ajuste general del modelo y complementa con `mae` o `mse` dependiendo de si los errores grandes son críticos o no.
+### Métricas/Técnicas de Evaluación para Modelos de **Regresión**
+
+#### **R² Score** (Coeficiente de Determinación)
+
+Indica qué porcentaje de la variación en los datos depende de las características del modelo. El mejor valor posible es 1.0.
+
+```python
+from sklearn.metrics import r2_score
+r2 = r2_score(y_test, y_preds)
+print("R² Score:", r2)
+```
+
+Compara las predicciones del modelo con la media de los valores reales. Los valores pueden variar desde -∞ (modelo muy malo) hasta 1 (modelo perfecto). Por ejemplo:
+
+- Un modelo que solo predice la media de los valores tiene un R² de 0.
+- Un modelo que predice perfectamente los valores tiene un R² de 1.
+
+> 🔗 [`r2_score` Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html)
+
+#### **Mean Absolute Error (MAE)**
+
+Promedio de las diferencias absolutas entre valores predichos y reales. Proporciona una idea de cuánto se equivocaron las predicciones en promedio. Mide el error en las mismas unidades que la variable dependiente.
+
+```python
+from sklearn.metrics import mean_absolute_error
+mae = mean_absolute_error(y_test, y_preds)
+print("MAE:", mae)
+```
+
+> 🔗 [`mean_absolute_error` Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)
+
+#### **Mean Squared Error (MSE)**
+
+Promedio de los errores al cuadrado, penalizando más los errores grandes.
+
+```python
+from sklearn.metrics import mean_squared_error
+mse = mean_squared_error(y_test, y_preds)
+print("MSE:", mse)
+```
+
+Promedio de las diferencias cuadradas entre las predicciones y los valores reales. Al elevar las diferencias al cuadrado:
+
+- Se eliminan los valores negativos.
+- Se amplifican los errores grandes.
+
+> 🔗 [`mean_squared_error` Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)
+
+---
+
+> _¿Qué métrica de regresión usar?_ > **R²:** Similar a la precisión en clasificación. Da una indicación general de qué tan bien funciona el modelo (valores cercanos a 1.0 son mejores), pero no indica cuánto se equivoca en promedio.
+> **MAE:** Muestra cuán lejos están en promedio las predicciones del modelo de los valores reales.
+> **MSE:** Útil si deseas penalizar más los errores grandes.
+>
+> - **Prioriza MAE:** Si un error de $10,000 es el doble de malo que un error de $5,000.
+> - **Prioriza MSE:** Si un error de $10,000 es más de dos veces peor que un error de $5,000.
+
+---
+
+> [!NOTE] >**Consejo Práctico**
+>
+> - **Clasificación:** Usa `accuracy_score` como métrica inicial y complementa con `classification_report` para analizar más detalles. La `roc_auc_score` es ideal si tienes probabilidades.
+> - **Regresión:** Comienza con `r2_score` para evaluar el ajuste general del modelo y complementa con `mae` o `mse` dependiendo de si los errores grandes son críticos o no.
+
+### Recursos adicionales
 
 - 🔗 [Metrics and scoring: quantifying the quality of predictions - Scikit-Learn](https://scikit-learn.org/stable/modules/model_evaluation)
+- 🔗 [Beyond Accuracy: Precision and Recall](https://towardsdatascience.com/beyond-accuracy-precision-and-recall-3da06bea9f6c)
+- 🔗 [Stack Overflow answer describing MSE (mean squared error) and RSME (root mean squared error)](https://stackoverflow.com/questions/17197492/is-there-a-library-function-for-root-mean-square-error-rmse-in-python/37861832#37861832)
 
 ## **16. Mejorar un Modelo de Machine Learning**
 
 - Ajustar hiperparámetros con `GridSearchCV`.
 - Añadir más datos o limpiar los existentes.
-
----
 
 ## **17. Guardar y Cargar Modelos**
 
@@ -762,18 +895,3 @@ loaded_model = joblib.load('model.pkl')
 ```
 
 ---
-
-## **18. Resumen Completo y Práctica Final**
-
-Integra todos los pasos para resolver un problema completo de Machine Learning:
-
-1. Limpia y transforma los datos.
-2. Divide los datos.
-3. Escala características.
-4. Ajusta un modelo.
-5. Evalúa su desempeño.
-6. Mejora si es necesario.
-
----
-
-Este archivo está diseñado para que sea un recurso práctico y útil a medida que avances en tu aprendizaje con Scikit-learn.
