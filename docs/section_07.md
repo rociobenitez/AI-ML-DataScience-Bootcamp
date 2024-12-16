@@ -883,8 +883,65 @@ Promedio de las diferencias cuadradas entre las predicciones y los valores reale
 
 ## **16. Mejorar un Modelo de Machine Learning**
 
-- Ajustar hiperparámetros con `GridSearchCV`.
-- Añadir más datos o limpiar los existentes.
+Mejorar un modelo de machine learning implica realizar ajustes tanto en los datos como en el modelo para aumentar su capacidad de hacer predicciones precisas. Aquí se detalla cómo abordar este proceso desde diferentes perspectivas.
+
+### **Desde la perspectiva de los datos**
+- **Recopilar más datos:** En general, cuantos más datos tengas, mejor será la capacidad del modelo para encontrar patrones. Sin embargo, asegúrate de que los datos sean relevantes y de buena calidad.
+- **Mejorar los datos existentes:**
+   - Eliminar valores atípicos.
+   - Rellenar o manejar valores faltantes.
+   - Escalar o normalizar los datos si es necesario.
+   - Transformar características categóricas a numéricas de forma adecuada.
+
+### **Desde la perspectiva del modelo**
+- **Probar diferentes modelos:** Experimenta con otros algoritmos que puedan ser más adecuados para tu problema (por ejemplo, cambiar de regresión lineal a regresión polinómica o probar modelos de ensamblado como Random Forest o Gradient Boosting).
+
+- **Mejorar el modelo actual:** Ajusta los **hiperparámetros** para optimizar el rendimiento del modelo.
+
+### **Hiperparámetros vs. Parámetros**
+- **Parámetros:** Son valores que el modelo aprende de los datos (como los pesos en un modelo de regresión).
+- **Hiperparámetros:** Son configuraciones definidas por el usuario que controlan cómo funciona el modelo (como la profundidad de los árboles en un Random Forest o el número de vecinos en KNN).
+
+### **Técnicas para ajustar hiperparámetros**
+1. **Ajuste manual:** Modifica los hiperparámetros manualmente, evaluando los resultados después de cada cambio. Este método es simple pero puede ser ineficiente.
+
+<img src="../assets/section-7/tuning-hyperparameters-by-hand.jpg" alt="Ajustar hiperparámetros a mano" width="600" style="margin: 24px auto; background: white;">
+
+2. **Búsqueda aleatoria (`RandomizedSearchCV`):** Explora un conjunto aleatorio de combinaciones de hiperparámetros dentro de un rango predefinido.
+   ```python
+   from sklearn.model_selection import RandomizedSearchCV
+
+   random_search = RandomizedSearchCV(estimator=model,
+                                      param_distributions=param_grid,
+                                      n_iter=50,
+                                      cv=5,
+                                      verbose=2)
+   random_search.fit(X_train, y_train)
+   ```
+
+🔗 [RandomizedSearchCV Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html)
+
+3. **Búsqueda exhaustiva (`GridSearchCV`):** Prueba todas las combinaciones posibles de hiperparámetros en un rango específico.
+   ```python
+   from sklearn.model_selection import GridSearchCV
+
+   grid_search = GridSearchCV(estimator=model,
+                              param_grid=param_grid,
+                              cv=5,
+                              verbose=2)
+   grid_search.fit(X_train, y_train)
+   ```
+
+🔗 [GridSearchCV Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+
+<img src="../assets/section-7/gridsearchcv-randomizedsearchcv.png" alt="Grid Search vs Randomized Search" width="600" style="margin: 24px auto; background: white;">
+
+
+>[!NOTE]
+>**Recomendaciones**
+>- Comienza con un **modelo base** y realiza experimentos incrementales para mejorarlo.
+>- Usa herramientas de **validación cruzada** para asegurarte de que las mejoras sean consistentes en diferentes subconjuntos de datos.
+>- Siempre documenta los cambios realizados y los resultados obtenidos para identificar qué ajustes producen mejores resultados.
 
 ## **17. Guardar y Cargar Modelos**
 
