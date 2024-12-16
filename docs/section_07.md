@@ -886,28 +886,33 @@ Promedio de las diferencias cuadradas entre las predicciones y los valores reale
 Mejorar un modelo de machine learning implica realizar ajustes tanto en los datos como en el modelo para aumentar su capacidad de hacer predicciones precisas. Aquí se detalla cómo abordar este proceso desde diferentes perspectivas.
 
 ### **Desde la perspectiva de los datos**
+
 - **Recopilar más datos:** En general, cuantos más datos tengas, mejor será la capacidad del modelo para encontrar patrones. Sin embargo, asegúrate de que los datos sean relevantes y de buena calidad.
 - **Mejorar los datos existentes:**
-   - Eliminar valores atípicos.
-   - Rellenar o manejar valores faltantes.
-   - Escalar o normalizar los datos si es necesario.
-   - Transformar características categóricas a numéricas de forma adecuada.
+  - Eliminar valores atípicos.
+  - Rellenar o manejar valores faltantes.
+  - Escalar o normalizar los datos si es necesario.
+  - Transformar características categóricas a numéricas de forma adecuada.
 
 ### **Desde la perspectiva del modelo**
+
 - **Probar diferentes modelos:** Experimenta con otros algoritmos que puedan ser más adecuados para tu problema (por ejemplo, cambiar de regresión lineal a regresión polinómica o probar modelos de ensamblado como Random Forest o Gradient Boosting).
 
 - **Mejorar el modelo actual:** Ajusta los **hiperparámetros** para optimizar el rendimiento del modelo.
 
 ### **Hiperparámetros vs. Parámetros**
+
 - **Parámetros:** Son valores que el modelo aprende de los datos (como los pesos en un modelo de regresión).
 - **Hiperparámetros:** Son configuraciones definidas por el usuario que controlan cómo funciona el modelo (como la profundidad de los árboles en un Random Forest o el número de vecinos en KNN).
 
 ### **Técnicas para ajustar hiperparámetros**
+
 1. **Ajuste manual:** Modifica los hiperparámetros manualmente, evaluando los resultados después de cada cambio. Este método es simple pero puede ser ineficiente.
 
 <img src="../assets/section-7/tuning-hyperparameters-by-hand.jpg" alt="Ajustar hiperparámetros a mano" width="600" style="margin: 24px auto; background: white;">
 
 2. **Búsqueda aleatoria (`RandomizedSearchCV`):** Explora un conjunto aleatorio de combinaciones de hiperparámetros dentro de un rango predefinido.
+
    ```python
    from sklearn.model_selection import RandomizedSearchCV
 
@@ -922,6 +927,7 @@ Mejorar un modelo de machine learning implica realizar ajustes tanto en los dato
 🔗 [RandomizedSearchCV Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html)
 
 3. **Búsqueda exhaustiva (`GridSearchCV`):** Prueba todas las combinaciones posibles de hiperparámetros en un rango específico.
+
    ```python
    from sklearn.model_selection import GridSearchCV
 
@@ -936,19 +942,101 @@ Mejorar un modelo de machine learning implica realizar ajustes tanto en los dato
 
 <img src="../assets/section-7/gridsearchcv-randomizedsearchcv.png" alt="Grid Search vs Randomized Search" width="600" style="margin: 24px auto; background: white;">
 
-
->[!NOTE]
->**Recomendaciones**
->- Comienza con un **modelo base** y realiza experimentos incrementales para mejorarlo.
->- Usa herramientas de **validación cruzada** para asegurarte de que las mejoras sean consistentes en diferentes subconjuntos de datos.
->- Siempre documenta los cambios realizados y los resultados obtenidos para identificar qué ajustes producen mejores resultados.
+> [!NOTE] >**Recomendaciones**
+>
+> - Comienza con un **modelo base** y realiza experimentos incrementales para mejorarlo.
+> - Usa herramientas de **validación cruzada** para asegurarte de que las mejoras sean consistentes en diferentes subconjuntos de datos.
+> - Siempre documenta los cambios realizados y los resultados obtenidos para identificar qué ajustes producen mejores resultados.
 
 ## **17. Guardar y Cargar Modelos**
 
+Aquí tienes la sección ajustada y explicada para incluir tanto `pickle` como `joblib`, y cuándo usar cada uno:
+
+---
+
+## **17. Guardar y Cargar Modelos**
+
+Guardar y cargar modelos entrenados es esencial para reutilizarlos en el futuro sin necesidad de volver a entrenarlos. En Python, puedes utilizar dos módulos principales para este propósito: `pickle` y `joblib`.
+
+### **1. Guardar y cargar modelos con Pickle**
+
+El módulo [`pickle`](https://docs.python.org/es/3.13/library/pickle.html) permite serializar objetos Python en un archivo y deserializarlos más tarde.
+
+```python
+import pickle
+
+# Guardar el modelo
+with open('model.pkl', 'wb') as file:
+    pickle.dump(model, file)
+
+# Cargar el modelo
+with open('model.pkl', 'rb') as file:
+    loaded_model = pickle.load(file)
+```
+
+### **2. Guardar y cargar modelos con Joblib**
+
+El módulo `joblib` está optimizado para serializar objetos más grandes y complejos, como modelos de machine learning o arrays de NumPy.
+
 ```python
 import joblib
-joblib.dump(model, 'model.pkl')
-loaded_model = joblib.load('model.pkl')
+
+# Guardar el modelo
+joblib.dump(model, 'model.joblib')
+
+# Cargar el modelo
+loaded_model = joblib.load('model.joblib')
+```
+
+### **¿Cuándo usar Pickle y cuándo Joblib?**
+
+- **Usar Pickle:**
+
+  - Cuando el modelo o los datos a guardar son relativamente pequeños y simples.
+  - Para guardar cualquier tipo de objeto Python que no sea específico de machine learning.
+  - Ejemplo: Guardar estructuras como listas, diccionarios o configuraciones de parámetros.
+
+- **Usar Joblib:**
+  - Cuando el modelo incluye grandes arrays de NumPy o estructuras pesadas como los entrenados por scikit-learn.
+  - Optimizado para velocidad y almacenamiento eficiente de objetos grandes.
+  - Ejemplo: Guardar modelos de machine learning como Random Forest, Gradient Boosting, etc.
+
+### **Consideraciones Importantes**
+
+1. **Compatibilidad:**
+
+   - `pickle` es un módulo nativo de Python, por lo que está disponible en cualquier entorno Python.
+   - `joblib` requiere [instalación previa](https://pypi.org/project/joblib/) (`pip install joblib`).
+
+2. **Tamaño de archivo:**
+
+   - `joblib` suele generar archivos más pequeños y manejar datos pesados de forma más eficiente.
+
+3. **Seguridad:**
+
+   - Evita cargar archivos de fuentes no confiables con `pickle` o `joblib`, ya que podrían ejecutar código malicioso durante el proceso de deserialización.
+
+4. **Extensiones:**
+   - Aunque puedes usar cualquier extensión para los archivos, se recomienda:
+     - `.pkl` para `pickle`.
+     - `.joblib` para `joblib`.
+
+### **Ejemplo Comparativo**
+
+```python
+# Guardar con pickle
+with open('model.pkl', 'wb') as file:
+    pickle.dump(model, file)
+
+# Guardar con joblib
+joblib.dump(model, 'model.joblib')
+
+# Cargar con pickle
+with open('model.pkl', 'rb') as file:
+    loaded_model_pickle = pickle.load(file)
+
+# Cargar con joblib
+loaded_model_joblib = joblib.load('model.joblib')
 ```
 
 ---
