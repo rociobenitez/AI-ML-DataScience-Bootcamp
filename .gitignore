@@ -26,3 +26,12 @@ results/
 .vscode/
 .idea/
 *.iml
+
+# Ignorar la carpeta bluebook-for-bulldozers
+data/raw/scikit-learn-data/bluebook-for-bulldozers/
+
+# Ignorar todos los archivos dentro de la carpeta bluebook-for-bulldozers
+data/raw/scikit-learn-data/bluebook-for-bulldozers/*
+
+# No ignorar el archivo bluebook-for-bulldozers.zip
+!data/raw/scikit-learn-data/bluebook-for-bulldozers.zip
