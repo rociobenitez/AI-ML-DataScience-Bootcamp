@@ -10,9 +10,7 @@ Incluye:
 
 Puedes seguir esta guía para asegurar un entorno limpio, reproducible y escalable, fundamental para trabajar con modelos de Machine Learning y grandes volúmenes de datos.
 
----
-
-### **Índice**
+## Índice
 
 1. [¿Qué es Conda?](#1-qué-es-conda)
 2. [Conda CheatSheet](#2-conda-cheatsheet)
@@ -27,9 +25,7 @@ Puedes seguir esta guía para asegurar un entorno limpio, reproducible y escalab
 10. [Jupyter Notebook](#10-jupyter-notebook)
 11. [Atajos Esenciales para Jupyter Notebook](#11-atajos-esenciales-para-jupyter-notebook)
 
----
-
-### **1. ¿Qué es Conda?**
+## 1. ¿Qué es Conda?
 
 Conda es un **gestor de entornos y paquetes** de código abierto. Fue diseñado inicialmente para Python, pero también gestiona otros lenguajes como R. Sus principales características son:
 
@@ -44,9 +40,7 @@ Conda es un **gestor de entornos y paquetes** de código abierto. Fue diseñado 
 
 > 🔗 [Conda Documentación](https://docs.conda.io/en/latest/)
 
----
-
-### **2. Conda CheatSheet**
+## 2. Conda CheatSheet
 
 El cheat sheet es un resumen visual y rápido con los comandos más comunes de Conda. Es una herramienta muy útil para tener a mano mientras trabajas con Conda.
 
@@ -70,9 +64,7 @@ El cheat sheet es un resumen visual y rápido con los comandos más comunes de C
 
 > 🔗 Consulta el [Conda CheatSheet](/references/conda-cheatsheet.pdf) para más comandos.
 
----
-
-### **3. Getting started with Conda**
+## 3. Getting started with Conda
 
 Esta guía introduce cómo empezar a usar Conda, desde su instalación hasta el uso básico.
 
@@ -96,15 +88,13 @@ Esta guía introduce cómo empezar a usar Conda, desde su instalación hasta el 
 
 > Para más detalles, revisa la guía completa: [Getting started with conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
 
----
-
-### **4. Preparando el equipo para ML**
+## 4. Preparando el equipo para ML
 
 Configurar tu equipo correctamente es crucial para garantizar que los proyectos de Machine Learning y Ciencia de Datos se desarrollen de manera eficiente y sin conflictos entre paquetes.
 
 El artículo [Getting your computer ready for machine learning](https://www.mrdbourke.com/get-your-computer-ready-for-machine-learning-using-anaconda-miniconda-and-conda/) de Daniel Bourke describe cómo usar herramientas como **Anaconda**, **Miniconda** y **Conda** para preparar tu entorno de trabajo.
 
-#### **Resumen Técnico:**
+### Resumen Técnico:
 
 1. **Anaconda:** Ideal para principiantes porque incluye un ecosistema completo con herramientas preinstaladas.
 2. **Miniconda:** Más ligera y flexible, adecuada para usuarios avanzados que prefieren instalar solo lo necesario.
@@ -112,7 +102,7 @@ El artículo [Getting your computer ready for machine learning](https://www.mrdb
 
 <img src="/assets/section-3/conda-miniconda-anaconda.png" alt="Conda, Miniconda y Anaconda" width="600">
 
-#### **Recomendaciones Prácticas:**
+### Recomendaciones Prácticas:
 
 - Usa **Miniconda** si quieres mantener tu equipo más limpio y personalizar las herramientas necesarias.
 - Crea **entornos específicos** para cada proyecto para evitar conflictos de dependencias.
@@ -120,9 +110,7 @@ El artículo [Getting your computer ready for machine learning](https://www.mrdb
 
 > 🔗 Consulta el artículo completo para más detalles y configuraciones avanzadas: [Getting your computer ready for machine learning](https://www.mrdbourke.com/get-your-computer-ready-for-machine-learning-using-anaconda-miniconda-and-conda/)
 
----
-
-### **5. Miniconda para macOS**
+## 5. Miniconda para macOS
 
 Miniconda es una versión compacta y ligera de Anaconda.
 
@@ -130,7 +118,7 @@ Miniconda es una versión compacta y ligera de Anaconda.
 - Es ideal para mantener un sistema limpio y personalizar las herramientas que necesitas para tus proyectos.
 - 🔗 [Installing Miniconda Docs](https://docs.anaconda.com/miniconda/install/)
 
-#### **Instalación**
+### Instalación
 
 1. **Descarga el instalador para macOS:**  
    Según tu arquitectura, utiliza el siguiente comando en la terminal para descargar Miniconda:
@@ -176,7 +164,7 @@ Miniconda es una versión compacta y ligera de Anaconda.
    ```
    Si todo está en orden, deberías ver algo como `conda 24.9.2`.
 
-#### **Ventajas de Miniconda**
+### Ventajas de Miniconda
 
 - **Ligereza:** A diferencia de Anaconda, Miniconda no incluye decenas de paquetes preinstalados. Esto reduce el consumo de espacio en disco y permite una mayor personalización.
 - **Flexibilidad:** Puedes instalar solo las bibliotecas necesarias para tu proyecto, optimizando recursos y minimizando conflictos entre dependencias.
@@ -184,9 +172,7 @@ Miniconda es una versión compacta y ligera de Anaconda.
 - **Velocidad en entornos personalizados:** Crear entornos específicos con Miniconda es rápido y eficiente, lo que facilita la reproducción de proyectos en otros sistemas.
 - **Soporte de Canales:** Permite utilizar canales como `conda-forge`, ampliando la disponibilidad de paquetes actualizados y especializados.
 
----
-
-### **6. Cómo Saber si Tienes Conda o Miniconda Instalados**
+## 6. Cómo Saber si Tienes Conda o Miniconda Instalados
 
 Para verificar si ya tienes Conda o Miniconda instalados en tu equipo, sigue estos pasos:
 
@@ -219,9 +205,7 @@ Para verificar si ya tienes Conda o Miniconda instalados en tu equipo, sigue est
 
 > **Si Conda o Miniconda No Están Instalados**: Si no están instalados, sigue los pasos de instalación indicados en la sección ["5. Miniconda para macOS"](#5-miniconda-para-macos) o consulta las guías específicas de instalación para tu sistema operativo.
 
----
-
-### **7. Pasos para Configurar un Proyecto de ML en Mac**
+## 7. Pasos para Configurar un Proyecto de ML en Mac
 
 Estos son los pasos clave para iniciar un proyecto de Machine Learning utilizando **Conda**, asegurando un entorno bien configurado y aislado.
 
@@ -237,7 +221,7 @@ Estos son los pasos clave para iniciar un proyecto de Machine Learning utilizand
 
 - Utiliza Conda para crear un entorno virtual que incluya las bibliotecas necesarias desde el inicio:
   ```bash
-  conda create --prefix ./env python=3.9 pandas numpy matplotlib scikit-learn
+  conda create --prefix ./env python=3.10 pandas numpy matplotlib scikit-learn seaborn
   ```
 
 <img src="/assets/section-3/conda-terminal.png" alt="Crear entorno en un proyecto de ML (terminal)" width="600">
@@ -306,9 +290,7 @@ Estos son los pasos clave para iniciar un proyecto de Machine Learning utilizand
 
 > Estos pasos te permiten configurar un entorno limpio y aislado para cada proyecto. Esto asegura **compatibilidad de dependencias y evita conflictos** con otros proyectos en tu sistema.
 
----
-
-### **8. Usar el Entorno en Jupyter Notebook**
+## 8. Usar el Entorno en Jupyter Notebook
 
 Una vez configurado tu entorno de Conda, puedes integrarlo con **Jupyter Notebook** para realizar análisis interactivos y trabajar en tus proyectos de Machine Learning de manera eficiente.
 
@@ -374,9 +356,7 @@ Cuando termines de trabajar, puedes cerrar Jupyter Notebook desde la interfaz we
 
 > 🎯 Estos pasos permiten usar el entorno Conda como un kernel en Jupyter Notebook, asegurando que todo el trabajo en tus notebooks utilice las bibliotecas y configuraciones específicas del proyecto.
 
----
-
-### **9. Compartir tu Entorno Conda**
+## 9. Compartir tu Entorno Conda
 
 Puede llegar un momento en el que necesites compartir el contenido de tu entorno Conda. Esto puede ser útil para compartir el flujo de trabajo de un proyecto con un colega o con alguien que necesite configurar su sistema para tener acceso a las mismas herramientas que tú.
 
@@ -385,12 +365,12 @@ Hay un par de formas de hacerlo:
 1. **Compartir toda la carpeta del proyecto**, incluida la carpeta del entorno que contiene todos los paquetes de Conda.
 2. **Compartir un archivo `.yml`** (se pronuncia _YAM-L_) que describa tu entorno Conda.
 
-#### **Método 1: Compartir la Carpeta Completa**
+### Método 1: Compartir la Carpeta Completa
 
 - **Ventaja:** Es un método sencillo. Comparte la carpeta, activa el entorno y ejecuta el código.
 - **Desventaja:** Las carpetas de entorno pueden ser muy grandes y difíciles de compartir.
 
-#### **Método 2: Compartir un Archivo `.yml`**
+### Método 2: Compartir un Archivo `.yml`
 
 Un archivo `.yml` es básicamente un archivo de texto con instrucciones que indican a Conda cómo configurar un entorno. Este método es más ligero y práctico para compartir configuraciones.
 
@@ -417,7 +397,7 @@ dependencies:
 
 El contenido del archivo dependerá de los paquetes instalados en tu entorno.
 
-#### **Crear un Entorno desde un Archivo `.yml`**
+### Crear un Entorno desde un Archivo `.yml`
 
 Para crear un nuevo entorno llamado `env_from_file` a partir de un archivo llamado `environment.yml`, utiliza el siguiente comando:
 
@@ -427,18 +407,16 @@ conda env create --file environment.yml --name env_from_file
 
 Esto configurará un nuevo entorno en tu sistema con los paquetes especificados en el archivo `.yml`.
 
-#### **Más Información**
+### Más Información
 
 - **Para compartir entornos:** Consulta la [documentación de Conda sobre compartir entornos](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment).
 - **Para crear entornos desde un archivo `.yml`:** Consulta la [documentación de Conda sobre la creación de entornos desde archivos `.yml`](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file).
 
----
-
-### **10. Jupyter Notebook**
+## 10. Jupyter Notebook
 
 **Jupyter Notebook** es una herramienta interactiva ampliamente utilizada en Ciencia de Datos y Machine Learning. Permite combinar código ejecutable, visualizaciones y texto en un solo documento, ideal para análisis exploratorio, desarrollo de modelos y documentación.
 
-#### **Uso Básico**
+### Uso Básico
 
 1. **Iniciar Jupyter Notebook:**
 
@@ -469,20 +447,18 @@ Esto configurará un nuevo entorno en tu sistema con los paquetes especificados 
 
 > 🎯 Jupyter Notebook es esencial para trabajar de forma colaborativa y documentar todo el flujo de trabajo en proyectos de ML.
 
----
-
-### **11. Atajos Esenciales para Jupyter Notebook**
+## 11. Atajos Esenciales para Jupyter Notebook
 
 Conocer los atajos de teclado en **Jupyter Notebook** puede aumentar significativamente tu productividad.
 
-#### **Modo de Edición (dentro de una celda):**
+### Modo de Edición (dentro de una celda):
 
 - `Ctrl + Enter`: Ejecuta la celda actual sin mover el cursor.
 - `Shift + Enter`: Ejecuta la celda y mueve el cursor a la siguiente.
 - `Alt + Enter`: Ejecuta la celda y crea una nueva celda debajo.
 - `Esc`: Cambia al modo de comando.
 
-#### **Modo de Comando (fuera de una celda):**
+### Modo de Comando (fuera de una celda):
 
 - `A`: Inserta una celda arriba de la actual.
 - `B`: Inserta una celda debajo de la actual.
@@ -491,12 +467,10 @@ Conocer los atajos de teclado en **Jupyter Notebook** puede aumentar significati
 - `Y`: Convierte la celda en código.
 - `Z`: Deshacer eliminación de una celda.
 
-#### **Atajos Globales:**
+### Atajos Globales:
 
 - `Ctrl + S`: Guarda el notebook.
 - `Shift + M`: Combina celdas seleccionadas.
 - `Ctrl + Shift + -`: Divide una celda en el punto del cursor.
 
 > 📌 Para más atajos, presiona `H` en el modo de comando para abrir la lista completa.
-
----
