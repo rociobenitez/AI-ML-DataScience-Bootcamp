@@ -111,7 +111,7 @@ El curso está dividido en 20 secciones. Este es un resumen del progreso realiza
 | 8       | Supervised Learning - Clasificación + Regresión       |                                                                                                                                                     | ❌     |
 | 9       | Supervised Learning - Clasificación                   |                                                                                                                                                     | ❌     |
 | 10      | Supervised Learning - Time Series Data                |                                                                                                                                                     | ❌     |
-| 11      | Data Engineering                                      |                                                                                                                                                     | ❌     |
+| 11      | [Data Engineering](/docs/section_10.md)               | Data Engineering, Tipos de Datos, Tipos de Bases de Datos, Hadoop, Apache Spark, y Stream Processing                                                | ✅     |
 | 12      | Redes neuronales                                      | Deep Learning, Transfer Learning and TensorFlow 2                                                                                                   | ❌     |
 | ...     | ...                                                   | ...                                                                                                                                                 | ...    |
 
