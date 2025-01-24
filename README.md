@@ -1,73 +1,33 @@
-# Complete A.I. & Machine Learning, Data Science Bootcamp
+# Complete A.I. & Machine Learning, Data Science Bootcamp (en proceso)
 
-Este repositorio contiene todo el trabajo realizado durante el curso _Complete A.I. & Machine Learning, Data Science Bootcamp_. La estructura del proyecto y los contenidos están organizados para facilitar la navegación y el aprendizaje.
+Este repositorio contiene todo el trabajo realizado durante el curso [_Complete A.I. & Machine Learning, Data Science Bootcamp_](https://zerotomastery.io/courses/machine-learning-and-data-science-bootcamp/). La estructura del proyecto y los contenidos están organizados para facilitar la navegación y el aprendizaje.
 
----
+Este curso cubre temas esenciales de Machine Learning, Inteligencia Artificial y Ciencia de Datos. Está dividido en 20 secciones, cada una con notebooks y scripts detallados.
 
-## **Índice**
+## Índice
 
-1. [Introducción](#introducción)
-2. [Estructura del proyecto](#estructura-del-proyecto)
-3. [Instalación y configuración](#instalación-y-configuración)
-4. [Progreso del curso](#progreso-del-curso)
-
----
-
-## Introducción
-
-Este curso cubre temas esenciales de Machine Learning, Inteligencia Artificial y Ciencia de Datos. Está dividido en 20 secciones, cada una con notebooks y scripts detallados. A medida que avanzamos, se añadirá más información en este archivo.
-
----
+1. [Estructura del proyecto](#estructura-del-proyecto)
+2. [Instalación y configuración](#instalación-y-configuración)
+3. [Progreso del curso](#progreso-del-curso)
 
 ## Estructura del proyecto
 
 ```
 project/
-├── data/                   # Datos crudos o procesados
-│   ├── raw/                # Datos originales sin procesar
-│   ├── processed/          # Datos procesados listos para análisis
-├── notebooks/              # Jupyter notebooks organizados por sección
-│   ├── 01-introduction.ipynb
-│   ├── 02-data-cleaning.ipynb
-│   └── ...                 # Archivos por cada sección del curso
-├── scripts/                # Scripts de Python para tareas específicas
-│   ├── data_preprocessing.py
-│   ├── model_training.py
-│   └── utils.py
-├── models/                 # Modelos entrenados y checkpoints
-│   ├── model_v1.pkl
-│   └── model_v2.pkl
-├── results/                # Resultados generados (gráficos, métricas, etc.)
-│   ├── plots/
-│   ├── metrics/
-│   └── logs/
-├── references/             # Recursos externos como papers, enlaces, etc.
-├── environment/            # Configuración de entorno
-│   ├── environment.yml     # Archivo de Conda con dependencias
-│   └── requirements.txt    # Alternativa para instalar dependencias con pip
-├── README.md               # Documentación principal
-└── .gitignore              # Archivos y carpetas a ignorar en Git
+├── assets/            # Imágenes y recursos gráficos adicionales
+├── data/              # Datos crudos o procesados
+│   ├── raw/           # Datos originales sin procesar
+│   ├── processed/     # Datos procesados listos para análisis
+├── docs/              # Documentación de cada sección del curso
+├── scripts/           # Scripts de Python para tareas específicas
+├── models/            # Modelos entrenados y checkpoints
+├── notebooks/         # Jupyter notebooks organizados por sección
+├── references/        # Recursos externos como papers, enlaces, etc.
+├── environment.yml    # Archivo de Conda con dependencias
+├── requirements.txt   # Alternativa para instalar dependencias con pip
+├── README.md          # Documentación principal
+└── .gitignore         # Archivos y carpetas a ignorar en Git
 ```
-
-## Estructura del proyecto
-
-La estructura del repositorio está organizada en diferentes directorios para una navegación eficiente:
-
-```
-assets/                 # Imágenes y archivos
-data/                   # Datos crudos y procesados
-notebooks/              # Notebooks organizados por sección
-scripts/                # Scripts para tareas repetitivas
-models/                 # Modelos entrenados
-results/                # Gráficos y métricas generadas
-references/             # Recursos externos y papers
-environment/            # Archivos de configuración del entorno
-README.md               # Documentación principal
-```
-
-Cada carpeta está diseñada para contener recursos específicos y mantenerse modular.
-
----
 
 ## Instalación y configuración
 
@@ -75,22 +35,27 @@ Cada carpeta está diseñada para contener recursos específicos y mantenerse mo
 
 - Python >= 3.9
 - Conda instalado (Miniconda o Anaconda)
+- Jupyter Notebook
 
 ### Instrucciones:
 
-1. Clona este repositorio:
+1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/tu_proyecto.git
-   cd tu_proyecto
+   git clone git@github.com:rociobenitez/AI-ML-DataScience-Bootcamp.git
+   cd AI-ML-DataScience-Bootcamp
    ```
 2. Crea y activa el entorno de Conda:
    ```bash
    conda env create -f environment/environment.yml
-   conda activate tu_entorno
+   conda activate env
    ```
-3. Instala las dependencias adicionales (si es necesario):
+3. Registra el entorno en Jupyter Notebook:
    ```bash
-   pip install -r environment/requirements.txt
+   python -m ipykernel install --user --name=env --display-name "Python (env)"
+   ```
+4. Inicia Jupyter Notebook:
+   ```bash
+   jupyter notebook
    ```
 
 ---
