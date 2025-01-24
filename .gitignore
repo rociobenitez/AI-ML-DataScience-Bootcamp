@@ -14,10 +14,6 @@ venv/
 .venv/
 .env/
 
-# Archivos de dependencias
-environment/
-__pycache__/
-
 # Archivos grandes o generados
 *.log
 results/

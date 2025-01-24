@@ -14,19 +14,21 @@ Este curso cubre temas esenciales de Machine Learning, Inteligencia Artificial y
 
 ```
 project/
-├── assets/            # Imágenes y recursos gráficos adicionales
-├── data/              # Datos crudos o procesados
-│   ├── raw/           # Datos originales sin procesar
-│   ├── processed/     # Datos procesados listos para análisis
-├── docs/              # Documentación de cada sección del curso
-├── scripts/           # Scripts de Python para tareas específicas
-├── models/            # Modelos entrenados y checkpoints
-├── notebooks/         # Jupyter notebooks organizados por sección
-├── references/        # Recursos externos como papers, enlaces, etc.
-├── environment.yml    # Archivo de Conda con dependencias
-├── requirements.txt   # Alternativa para instalar dependencias con pip
-├── README.md          # Documentación principal
-└── .gitignore         # Archivos y carpetas a ignorar en Git
+├── assets/                # Imágenes y recursos gráficos adicionales
+├── data/                  # Datos crudos o procesados
+│   ├── raw/               # Datos originales sin procesar
+│   ├── processed/         # Datos procesados listos para análisis
+├── docs/                  # Documentación de cada sección del curso
+├── scripts/               # Scripts de Python para tareas específicas
+├── models/                # Modelos entrenados y checkpoints
+├── notebooks/             # Jupyter notebooks organizados por sección
+├── references/            # Recursos externos como papers, enlaces, etc.
+├── environment/           # Configuración del entorno
+│   ├── environment.yml    # Archivo para configurar el entorno Conda
+│   └── requirements.txt   # Dependencias opcionales para pip
+├── requirements.txt       # Alternativa para instalar dependencias con pip
+├── README.md              # Documentación principal
+└── .gitignore             # Archivos y carpetas a ignorar en Git
 ```
 
 ## Instalación y configuración
@@ -45,9 +47,14 @@ project/
    cd AI-ML-DataScience-Bootcamp
    ```
 2. Crea y activa el entorno de Conda:
+   Si estás trabajando con Conda, utiliza el archivo `environment.yml` para crear un entorno con todas las dependencias:
    ```bash
    conda env create -f environment/environment.yml
    conda activate env
+   ```
+   Si prefieres usar pip en lugar de Conda, o necesitas un entorno compatible con otros sistemas, puedes usar el archivo `requirements.txt`:
+   ```bash
+   pip install -r environment/requirements.txt
    ```
 3. Registra el entorno en Jupyter Notebook:
    ```bash
