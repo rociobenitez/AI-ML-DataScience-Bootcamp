@@ -2,11 +2,20 @@
 
 ## Introducción
 
-Esta sección explora cómo abordar un problema de regresión utilizando el [dataset de Kaggle sobre enfermedades cardíacas El objetivo es desarrollar un **flujo de trabajo completo que aborde las etapas clave de un proyecto de machine learning**, desde la exploración de los datos hasta la optimización del modelo.
+Esta sección explora cómo abordar un problema de regresión utilizando el dataset de Kaggle sobre enfermedades cardíacas El objetivo es desarrollar un **flujo de trabajo completo que aborde las etapas clave de un proyecto de machine learning**, desde la exploración de los datos hasta la optimización del modelo.
 
 Este proyecto aborda un problema de clasificación binaria utilizando un [dataset sencillo de Kaggle relacionado con enfermedades cardíacas](https://www.kaggle.com/datasets/sumaiyatasmeem/heart-disease-classification-dataset). Los datos originales provienen de la [base de datos de Cleveland del Repositorio de Aprendizaje Automático de UCI](https://archive.ics.uci.edu/dataset/45/heart+disease). El objetivo es **predecir la presencia o ausencia de enfermedad cardíaca en función de características clínicas.**
 
 El flujo de trabajo para este proyecto se explica de manera resumida en el cuaderno [heart-disease-classification.ipynb](../notebooks/5-structured-data-projects/heart-disease-classification.ipynb). Sin embargo, para un análisis más detallado y estructurado, se puede consultar [el repositorio completo en GitHub](https://github.com/rociobenitez/heart-disease-prediction), donde se incluyen optimizaciones, experimentos adicionales y una estructura más modular.
+
+## Índice
+
+1. [Configuración del Entorno](#1-configuración-del-entorno)
+2. [Exploración de Datos (EDA)](#2-exploración-de-datos-eda)
+3. [Flujo de Trabajo de Machine Learning](#3-flujo-de-trabajo-de-machine-learning)
+4. [Resultados del Modelado](#4-resultados-del-modelado)
+5. [Conclusión Final](#5-conclusión-final)
+6. [Recursos Complementarios](#6-recursos-complementarios)
 
 ## 1. Configuración del Entorno
 
@@ -49,7 +58,7 @@ La gestión de entornos es fundamental para garantizar que los experimentos sean
 - matplotlib
 - seaborn
 
-> [!Note]
+> [!Nota]
 > Al ser un dataset relativamente sencillo y pequeño, no se requiere una gran etapa de preprocesamiento. Los datos ya están **preparados y limpios**, sin valores faltantes, lo que simplifica el flujo de trabajo.
 
 ## 2. Exploración de Datos (EDA)
