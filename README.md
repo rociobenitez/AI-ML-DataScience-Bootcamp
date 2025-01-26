@@ -65,8 +65,6 @@ project/
    jupyter notebook
    ```
 
----
-
 ## Progreso del curso
 
 El curso está dividido en 20 secciones. Este es un resumen del progreso realizado hasta ahora:
@@ -81,16 +79,13 @@ El curso está dividido en 20 secciones. Este es un resumen del progreso realiza
 | 6       | [Matplotlib](/docs/section_06.md)                          | Data visualization, customization, saving plots                                                                                                     | ✅     |
 | 7       | [Scikit-learn](/docs/section_07.md)                        | Workflow en Scikit-Learn: obtener y preparar los datos, elegir estimador e hiperparámetros, ajustar, hacer predicciones, evaluar, mejorar el modelo | ✅     |
 | 8       | [Supervised Learning - Clasificación](/docs/section_08.md) | Flujo de trabajo para abordar etapas clavo de un proyecto de clasificación de machine learning                                                      | ✅     |
-| 9       | Supervised Learning - Regresión                            | Flujo de trabajo para abordar etapas clavo de un proyecto de regresión de machine learning                                                          | 🚧     |
+| 9       | [Supervised Learning - Regresión](/docs/section_09.md)     | Flujo de trabajo para abordar etapas clavo de un proyecto de regresión de machine learning                                                          | 🚧     |
 | 10      | [Data Engineering](/docs/section_10.md)                    | Data Engineering, Tipos de Datos, Tipos de Bases de Datos, Hadoop, Apache Spark, y Stream Processing                                                | ✅     |
-| 12      | Redes neuronales                                           | Deep Learning, Transfer Learning and TensorFlow 2                                                                                                   | ❌     |
-| ...     | ...                                                        | ...                                                                                                                                                 | ...    |
+| 12      | [Deep Learning, Redes neuronales](/docs/section_11.md)     | Deep Learning, Transfer Learning and TensorFlow 2. Proyecto 'Dog Vision'                                                                            | 🚧     |
 
 - **✅ Completado**
 - **🚧 En progreso**
 - **❌ Pendiente**
-
----
 
 ## Recursos y Enlaces de interés
 
